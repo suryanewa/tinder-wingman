@@ -1,0 +1,18 @@
+{
+  "name": "wingman-pitch",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2",
+    "gsap": "^3.12.5",
+    "reveal.js": "^5.0.4"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
