@@ -16,7 +16,7 @@ test('getDeterministicSuggestions returns stable ordered results for same inputs
 });
 
 test('getDeterministicSuggestions returns 3 unique suggestion texts', () => {
-    const suggestions = getDeterministicSuggestions(demoProfile, 'direct', 54321, 3);
+    const suggestions = getDeterministicSuggestions(demoProfile, 'intellectual', 54321, 3);
     assert.equal(suggestions.length, 3);
     assert.equal(new Set(suggestions.map((item) => item.text)).size, 3);
 });
@@ -29,11 +29,25 @@ test('getDeterministicSuggestions fills missing token data with safe fallback te
         photoCaptionLabels: [],
         city: ''
     };
-    const suggestions = getDeterministicSuggestions(sparseProfile, 'dry', 111, 3);
+    const suggestions = getDeterministicSuggestions(sparseProfile, 'unknown-tone', 111, 3);
     assert.equal(suggestions.length, 3);
     suggestions.forEach((suggestion) => {
         assert.ok(!suggestion.text.includes('{'));
     });
+});
+
+test('different seeds produce different playful suggestions', () => {
+    const first = getDeterministicSuggestions(demoProfile, 'playful', 101, 3).map((item) => item.id);
+    const second = getDeterministicSuggestions(demoProfile, 'playful', 202, 3).map((item) => item.id);
+    assert.notDeepEqual(second, first);
+});
+
+test('raunchy tone always returns the pinned three lines in order', () => {
+    const suggestions = getDeterministicSuggestions(demoProfile, 'raunchy', 777, 3);
+    assert.deepEqual(
+        suggestions.map((item) => item.id),
+        ['r8', 'r28', 'r35']
+    );
 });
 
 test('chat state supports select -> edit -> send flow', () => {

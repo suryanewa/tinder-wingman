@@ -212,6 +212,10 @@ const lineLibrary = {
     ]
 };
 
+const pinnedToneLineIds = {
+    raunchy: ['r8', 'r28', 'r35']
+};
+
 const fallbackTemplates = [
     'Quick opener: what has been the highlight of your week so far?',
     'Your profile seems fun. What are you excited about this weekend?',
@@ -270,7 +274,29 @@ function buildWhyLabel(parts) {
     return `Based on: ${parts.join(' + ')}`;
 }
 
+function getPinnedToneSuggestions(profile, tone, count) {
+    const pinnedIds = pinnedToneLineIds[tone];
+    if (!pinnedIds) return null;
+    const toneLines = lineLibrary[tone] || [];
+    const lineById = new Map(toneLines.map((entry) => [entry.id, entry]));
+
+    return pinnedIds
+        .slice(0, count)
+        .map((id) => lineById.get(id))
+        .filter(Boolean)
+        .map((entry) => ({
+            id: entry.id,
+            text: fillTemplate(entry.template, profile),
+            why: buildWhyLabel(entry.why)
+        }));
+}
+
 export function getDeterministicSuggestions(profile, tone, seed = demoSeed, count = 3) {
+    const pinnedSuggestions = getPinnedToneSuggestions(profile, tone, count);
+    if (pinnedSuggestions && pinnedSuggestions.length > 0) {
+        return pinnedSuggestions;
+    }
+
     const toneLines = lineLibrary[tone] || lineLibrary.playful;
     const combinedSeed = seed + hashString(profile.id) + hashString(tone);
     const shuffled = seededShuffle(toneLines, combinedSeed);

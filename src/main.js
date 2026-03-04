@@ -37,6 +37,8 @@ const demoChat = {
     suggestions: []
 };
 
+const pageLoadSeed = Math.floor(Math.random() * 1_000_000_000);
+
 const demoProfileView = {
     currentScreen: 0,
     dragStartX: 0,
@@ -52,6 +54,10 @@ const demoElements = {
     regenerateButton: null,
     toneButtons: []
 };
+
+function getCurrentSuggestionSeed() {
+    return demoSeed + pageLoadSeed + demoChat.seedOffset;
+}
 
 deck.initialize().then(() => {
     setupCustomProgressBar();
@@ -736,7 +742,7 @@ function setupDemoChat() {
                     ...demoChat.state,
                     selectedSuggestionId: null
                 };
-                demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
+                demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, getCurrentSuggestionSeed(), 3);
                 renderDemoSuggestions();
                 renderDraftComposer();
             });
@@ -750,7 +756,7 @@ function setupDemoChat() {
                 ...demoChat.state,
                 selectedSuggestionId: null
             };
-            demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
+            demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, getCurrentSuggestionSeed(), 3);
             renderDemoSuggestions();
             renderDraftComposer();
         });
@@ -790,7 +796,7 @@ function sendCurrentDraft() {
 function resetDemoChat() {
     demoChat.seedOffset = 0;
     demoChat.state = createChatState(initialDemoMessages);
-    demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
+    demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, getCurrentSuggestionSeed(), 3);
     renderDemoThread();
     renderDemoSuggestions();
     renderDraftComposer();
