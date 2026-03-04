@@ -106,6 +106,7 @@ function triggerSlideAnimation(indexh, direction) {
                 }
             }
         );
+        gsap.fromTo(`${slideSel} .orb-icon svg`, { scale: 0, rotate: -45, opacity: 0 }, { scale: 1, rotate: 0, opacity: 1, duration: 0.6, stagger: 0.2, ease: 'back.out(2)', delay: 1 });
         gsap.fromTo(`${slideSel} .conn-line`, { strokeDasharray: 400, strokeDashoffset: 400 }, { strokeDashoffset: 0, duration: 1, stagger: 0.3, delay: 1 });
     }
     else if (state === 'slide-4') {
@@ -174,6 +175,7 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .section-title`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.4 });
         gsap.fromTo(`${slideSel} .glow-metric`, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: 'elastic.out(1, 0.5)', delay: 0.6 });
         gsap.to(`${slideSel} .glow-metric`, { textShadow: '0 0 80px rgba(0,230,118,0.8)', duration: 1.5, yoyo: true, repeat: -1, delay: 1.6 });
+        gsap.fromTo(`${slideSel} .inline-icon`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, stagger: 0.4, ease: 'back.out(2)', delay: 0.6 });
         gsap.fromTo(`${slideSel} .body-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.2 });
         gsap.fromTo(`${slideSel} .glass-container`, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 1.5 });
     }

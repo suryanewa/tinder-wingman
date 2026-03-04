@@ -273,12 +273,13 @@ p {
     width: 32px;
     height: 32px;
     color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
 }
 
 .inline-icon {
     display: inline-block;
     color: inherit;
-    opacity: 0.8;
+    opacity: 0;
 }
 
 .orb-connections {
