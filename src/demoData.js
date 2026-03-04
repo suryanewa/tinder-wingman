@@ -1,8 +1,8 @@
 export const demoSeed = 240310;
 
 export const demoProfile = {
-    id: 'ava-chen-001',
-    name: 'Ava Chen',
+    id: 'emily-prakanazech-001',
+    name: 'Emily Prakanazech',
     age: 27,
     city: 'Brooklyn',
     bio: 'Climber, coffee spot hunter, and trivia-night regular. Always up for a museum detour on Sundays.',

@@ -598,9 +598,9 @@ p {
 /* Slide 11 + 12: Product Demo */
 .demo-profile-slide,
 .demo-chat-slide {
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    padding: 64px 72px 110px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 56px 64px 102px !important;
     gap: 22px;
 }
 
@@ -618,6 +618,7 @@ p {
     max-width: 1220px;
     display: grid;
     gap: 24px;
+    margin: 0 auto;
 }
 
 .demo-profile-layout {
