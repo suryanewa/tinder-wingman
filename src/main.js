@@ -266,22 +266,18 @@ function triggerSlideAnimation(indexh, direction) {
         // 2. Nodes pop in
         gsap.fromTo(`${slideSel} .nexus-node`,
             { scale: 0, opacity: 0 },
-            {
-                scale: 1, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)', delay: 1,
-                onComplete: () => {
-                    // 3. Continuous floating effect
-                    document.querySelectorAll(`${slideSel} .nexus-node`).forEach((node, i) => {
-                        gsap.to(node, {
-                            y: i % 2 === 0 ? 10 : -10,
-                            duration: 2 + i * 0.2,
-                            repeat: -1,
-                            yoyo: true,
-                            ease: "sine.inOut"
-                        });
-                    });
-                }
-            }
+            { scale: 1, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)', delay: 1 }
         );
+
+        // 3. Continuous floating effect
+        gsap.to(`${slideSel} .nexus-node`, {
+            y: (i) => i % 2 === 0 ? 10 : -10,
+            duration: (i) => 2 + i * 0.2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: 2.5
+        });
     } else if (state === 'slide-9') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .alert-svg`, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)', delay: 0.6 });
