@@ -82,21 +82,22 @@
             </section>
 
             <!-- Slide 4: Ground Truth -->
-            <section data-state="slide-4" class="slide-fullscreen light-theme">
-                <h2 class="section-title" style="color: #1A1A1A;">Ground Truth</h2>
-                <p class="body-text" style="color: #555;">The Hierarchy of "Good"</p>
-                <div class="stack-wrapper">
-                    <div class="stack-panel stack-p3" style="bottom: 0px; z-index: 1;">
-                        <h4 style="color:var(--accent-gold);">Business (Slow)</h4>
-                        <p style="color:#DDD;">Retention, churn, premium conversion.</p>
+            <section data-state="slide-4" class="slide-fullscreen dark-theme">
+                <h2 class="section-title">Ground Truth</h2>
+                <p class="body-text">The Hierarchy of "Good"</p>
+
+                <div class="hierarchy-visual">
+                    <div class="h-tier tier-business">
+                        <div class="h-label">Business (Slow)</div>
+                        <p class="h-desc">Retention, churn, premium conversion.</p>
                     </div>
-                    <div class="stack-panel stack-p2" style="bottom: 80px; z-index: 2;">
-                        <h4 style="color:var(--accent-green);">Behavioral (Better)</h4>
-                        <p style="color:#DDD;">Back-and-forth messages in 48h; unmatch within 1h.</p>
+                    <div class="h-tier tier-behavioral">
+                        <div class="h-label">Behavioral (Better)</div>
+                        <p class="h-desc">48h back-and-forth, unmatch within 1h.</p>
                     </div>
-                    <div class="stack-panel stack-p1" style="bottom: 160px; z-index: 3;">
-                        <h4 style="color:var(--accent-blue);">Operational (Fast)</h4>
-                        <p style="color:#DDD;">Acceptance rate, edit distance, time-to-send.</p>
+                    <div class="h-tier tier-operational">
+                        <div class="h-label">Operational (Fast)</div>
+                        <p class="h-desc">Acceptance rate, edit distance, latency.</p>
                     </div>
                 </div>
             </section>

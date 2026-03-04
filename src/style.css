@@ -265,41 +265,101 @@ p {
     stroke-linecap: round;
 }
 
-/* Slide 4: Stack */
-.stack-wrapper {
+/* Slide 4: Isometric Hierarchy */
+.hierarchy-visual {
     position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 350px;
-    margin-top: 60px;
-    perspective: 1000px;
+    width: 600px;
+    height: 400px;
+    margin-top: 40px;
+    perspective: 2000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.stack-panel {
+.h-tier {
+    position: relative;
+    width: 450px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 30px;
+    transform: rotateX(45deg) rotateZ(-15deg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.5);
+    margin-top: -40px;
+    /* Overlap tiers */
+}
+
+.h-tier::before {
+    content: '';
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    text-align: left;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
-    border-left: 5px solid #FFF;
+    height: 100%;
+    border-radius: inherit;
+    background: inherit;
+    z-index: -1;
+    transform: translateZ(-10px);
 }
 
-.stack-p1 {
-    border-color: var(--accent-blue);
-}
-
-.stack-p2 {
-    border-color: var(--accent-green);
-}
-
-.stack-p3 {
+.tier-business {
     border-color: var(--accent-gold);
+    box-shadow: -10px 10px 30px rgba(226, 185, 56, 0.1);
+    z-index: 1;
+}
+
+.tier-behavioral {
+    border-color: var(--accent-green);
+    box-shadow: -10px 10px 30px rgba(0, 230, 118, 0.1);
+    z-index: 2;
+    width: 400px;
+}
+
+.tier-operational {
+    border-color: var(--accent-blue);
+    box-shadow: -10px 10px 30px rgba(33, 212, 253, 0.1);
+    z-index: 3;
+    width: 350px;
+}
+
+.h-label {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #FFF;
+}
+
+.tier-business .h-label {
+    color: var(--accent-gold);
+}
+
+.tier-behavioral .h-label {
+    color: var(--accent-green);
+}
+
+.tier-operational .h-label {
+    color: var(--accent-blue);
+}
+
+.h-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.h-tier:hover {
+    transform: rotateX(40deg) rotateZ(-12deg) translateZ(30px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #FFF;
 }
 
 /* Slide 5: Success Metric */

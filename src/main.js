@@ -111,7 +111,11 @@ function triggerSlideAnimation(indexh, direction) {
     else if (state === 'slide-4') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
-        gsap.fromTo(`${slideSel} .stack-panel`, { y: 200, opacity: 0, rotationX: 45 }, { y: 0, opacity: 1, rotationX: 0, stagger: 0.2, duration: 0.8, ease: 'power3.out', delay: 0.6 });
+
+        gsap.fromTo(`${slideSel} .h-tier`,
+            { y: 300, opacity: 0, rotationX: 80 },
+            { y: 0, opacity: 1, rotationX: 45, stagger: 0.2, duration: 1.2, ease: 'power3.out', delay: 0.7 }
+        );
     }
     else if (state === 'slide-5') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.4 });
