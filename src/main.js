@@ -257,19 +257,13 @@ function triggerSlideAnimation(indexh, direction) {
     } else if (state === 'slide-8') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
 
-        // 1. Core pulses in
-        gsap.fromTo(`${slideSel} .nexus-center`,
-            { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)', delay: 0.6 }
-        );
-
-        // 2. Lines shoot out
+        // 1. Lines shoot out
         gsap.fromTo(`${slideSel} .nexus-line`,
             { strokeDasharray: 300, strokeDashoffset: 300 },
-            { strokeDashoffset: 0, duration: 0.8, stagger: 0.1, delay: 1 }
+            { strokeDashoffset: 0, duration: 0.8, stagger: 0.1, delay: 0.6 }
         );
 
-        // 3. Nodes pop in
+        // 2. Nodes pop in
         gsap.fromTo(`${slideSel} .nexus-node`,
             { scale: 0, opacity: 0 },
             {
