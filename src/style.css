@@ -270,7 +270,8 @@ p {
     position: relative;
     width: 600px;
     height: 400px;
-    margin-top: 40px;
+    margin-top: 80px;
+    margin-bottom: 40px;
     perspective: 2000px;
     display: flex;
     flex-direction: column;
