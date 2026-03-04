@@ -262,8 +262,23 @@ p {
 }
 
 .orb-icon {
-    font-size: 32px;
+    font-size: 2rem;
     margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orb-icon svg {
+    width: 32px;
+    height: 32px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.inline-icon {
+    display: inline-block;
+    color: inherit;
+    opacity: 0.8;
 }
 
 .orb-connections {
