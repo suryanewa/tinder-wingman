@@ -72,15 +72,18 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .glass-container`, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.3 });
         gsap.fromTo(`${slideSel} .impact-text`, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, delay: 0.6 });
         gsap.fromTo(`${slideSel} .fade-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.3 });
-        gsap.fromTo(`${slideSel} .bubble-path`,
-            { strokeDasharray: "60 600", strokeDashoffset: 600, stroke: '#FE3C72' },
+        const bubblePath = document.querySelector(`${slideSel} .bubble-path`);
+        const pathLength = 600; // Safe overestimate for this path
+
+        gsap.fromTo(bubblePath,
+            { strokeDasharray: pathLength, strokeDashoffset: pathLength, stroke: '#FE3C72', fill: '#2A2A2A', opacity: 0 },
             {
-                strokeDashoffset: 0, duration: 2, ease: 'power2.out', delay: 0.8, onComplete: () => {
-                    // Secondary infinite loop that "minds the gap"
-                    gsap.to(`${slideSel} .bubble-path`, {
-                        strokeDasharray: "150 450",
-                        strokeDashoffset: -600,
-                        duration: 4,
+                strokeDashoffset: 0, opacity: 1, duration: 1.5, ease: 'power2.out', delay: 0.8, onComplete: () => {
+                    // Once drawn, transition to a looping dash pattern
+                    gsap.set(bubblePath, { strokeDasharray: "100 200" });
+                    gsap.to(bubblePath, {
+                        strokeDashoffset: -300,
+                        duration: 3,
                         ease: "none",
                         repeat: -1
                     });
