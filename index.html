@@ -254,6 +254,80 @@
                 </div>
             </section>
 
+            <!-- Slide 11: Demo Profile -->
+            <section data-state="slide-11" class="slide-fullscreen dark-theme demo-profile-slide">
+                <p class="demo-kicker">Demo Setup</p>
+                <h2 class="section-title">Profile Inputs We Ground On</h2>
+                <div class="demo-profile-layout">
+                    <article class="demo-profile-card">
+                        <div class="demo-profile-header">
+                            <img id="demo-profile-photo" class="demo-profile-photo" src="/images/wingman-demo-persona.png"
+                                alt="Demo match profile photo">
+                            <div>
+                                <h3 id="demo-profile-name" class="demo-profile-name"></h3>
+                                <p id="demo-profile-meta" class="demo-profile-meta"></p>
+                                <p id="demo-profile-bio" class="demo-profile-bio"></p>
+                            </div>
+                        </div>
+                        <div class="demo-profile-sections">
+                            <div class="demo-profile-block">
+                                <h4>Prompt Answers</h4>
+                                <ul id="demo-profile-prompts" class="demo-list"></ul>
+                            </div>
+                            <div class="demo-profile-block">
+                                <h4>Interests</h4>
+                                <div id="demo-profile-interests" class="chip-row"></div>
+                            </div>
+                            <div class="demo-profile-block">
+                                <h4>Photo Labels</h4>
+                                <div id="demo-profile-labels" class="chip-row muted"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <aside class="demo-inputs-card">
+                        <h3>Wingman Inputs</h3>
+                        <p class="demo-input-label">Preferred Tone</p>
+                        <p id="demo-input-tone" class="demo-input-value"></p>
+                        <p class="demo-input-label">Avoid Topics</p>
+                        <div id="demo-avoid-topics" class="chip-row"></div>
+                        <p class="demo-input-footnote">Inference-time personalization only. Training requires explicit
+                            opt-in.</p>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- Slide 12: Interactive Chat Demo -->
+            <section data-state="slide-12" class="slide-fullscreen dark-theme demo-chat-slide">
+                <p class="demo-kicker">Live Demo</p>
+                <h2 class="section-title">Interactive Wingman Chat</h2>
+                <div class="demo-chat-layout">
+                    <article class="demo-phone-shell">
+                        <header class="demo-chat-topbar">
+                            <div class="demo-mini-avatar"></div>
+                            <div>
+                                <p id="demo-chat-match-name" class="demo-chat-match-name"></p>
+                                <p class="demo-chat-status">New match · opener window</p>
+                            </div>
+                        </header>
+                        <div id="demo-chat-thread" class="demo-chat-thread"></div>
+                        <div class="demo-composer">
+                            <textarea id="demo-draft-input" rows="2"
+                                placeholder="Pick a suggestion, edit if needed, then send."></textarea>
+                            <button id="demo-send-btn" class="demo-send-btn" type="button">Send</button>
+                        </div>
+                    </article>
+                    <aside class="demo-suggestion-panel">
+                        <div class="demo-suggestion-header">
+                            <h3>Wingman Suggestions</h3>
+                            <button id="demo-regenerate-btn" class="demo-regenerate-btn" type="button">Regenerate</button>
+                        </div>
+                        <p class="demo-tone-pill">Tone: <span id="demo-tone-label"></span></p>
+                        <div id="demo-suggestions" class="demo-suggestion-list"></div>
+                        <p class="demo-hint">Click suggestion -> edit text -> send</p>
+                    </aside>
+                </div>
+            </section>
+
         </div>
     </div>
 
