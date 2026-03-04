@@ -87,9 +87,26 @@ function triggerSlideAnimation(indexh, direction) {
     else if (state === 'slide-3') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
-        gsap.fromTo(`${slideSel} .orb`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.2, duration: 0.8, ease: 'back.out(1.5)', delay: 0.6 });
+
+        const orbs = document.querySelectorAll(`${slideSel} .orb`);
+        gsap.fromTo(orbs,
+            { scale: 0, opacity: 0 },
+            {
+                scale: 1, opacity: 1, stagger: 0.2, duration: 0.8, ease: 'back.out(1.5)', delay: 0.6,
+                onComplete: () => {
+                    orbs.forEach((orb, i) => {
+                        gsap.to(orb, {
+                            y: i % 2 === 0 ? 10 : -10,
+                            duration: 2 + i * 0.5,
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut"
+                        });
+                    });
+                }
+            }
+        );
         gsap.fromTo(`${slideSel} .conn-line`, { strokeDasharray: 400, strokeDashoffset: 400 }, { strokeDashoffset: 0, duration: 1, stagger: 0.3, delay: 1 });
-        anime({ targets: `${slideSel} .orb`, translateY: [-10, 10], direction: 'alternate', loop: true, easing: 'easeInOutSine', duration: 2000, delay: anime.stagger(200) });
     }
     else if (state === 'slide-4') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
