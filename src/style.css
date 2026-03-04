@@ -910,6 +910,7 @@ p {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    object-fit: cover;
     background: var(--tinder-gradient);
     box-shadow: 0 0 20px rgba(254, 60, 114, 0.4);
 }
