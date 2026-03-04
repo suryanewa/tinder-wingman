@@ -293,8 +293,8 @@ p {
     flex-direction: column;
     justify-content: center;
     box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.5);
-    margin-top: -40px;
-    /* Overlap tiers */
+    margin-top: 10px;
+    /* Increased spacing between tiers */
 }
 
 .h-tier::before {
