@@ -281,9 +281,9 @@ function triggerSlideAnimation(indexh, direction) {
     } else if (state === 'slide-9') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .alert-svg`, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)', delay: 0.6 });
-        gsap.fromTo(`${slideSel} .glass-container`, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power2.out', delay: 0.8 });
+        gsap.fromTo(`${slideSel} .risk-layout .glass-container`, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.8 });
         gsap.to(`${slideSel} .heartbeat-bg`, { scale: 1.1, opacity: 0.8, duration: 0.8, yoyo: true, repeat: -1, ease: 'power1.inOut', delay: 1 });
-        gsap.fromTo(`${slideSel} .risk-card`, { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.2, duration: 0.6, delay: 1 });
+        gsap.fromTo(`${slideSel} .risk-card`, { x: 30, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.2, duration: 0.6, delay: 1 });
     } else if (state === 'slide-10') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });

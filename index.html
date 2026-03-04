@@ -265,28 +265,35 @@
             <section data-state="slide-9" class="slide-fullscreen dark-theme" style="position:relative;">
                 <div class="heartbeat-bg"></div>
                 <h2 class="section-title" style="color: var(--tinder-pink);">Risk Management</h2>
-                <div class="glass-container"
-                    style="border-color:var(--tinder-pink); background:rgba(254,60,114,0.05); z-index:1;">
-                    <svg class="alert-svg" viewBox="0 0 24 24" fill="none" stroke="var(--tinder-pink)" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                        <line x1="12" y1="9" x2="12" y2="13" />
-                        <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                    <h3>The Kill Switch</h3>
-                    <p style="color:#CCC; margin-top:10px;">Auto-disable Wingman if guardrails cross stop rules.</p>
-                </div>
-                <div class="risk-row">
-                    <div class="risk-card rc-1">
-                        <h4 style="color:var(--tinder-pink)">Tech Risk</h4>
-                        <p style="font-size:0.9rem; color:#999; margin-top:5px;">Hallucination. Mitigation: Grounding.
-                        </p>
+                <div class="risk-layout">
+                    <!-- Left Column: Primary Risk Control -->
+                    <div class="glass-container"
+                        style="border-color:var(--tinder-pink); background:rgba(254,60,114,0.05); z-index:1; margin: 0; width: 100%;">
+                        <svg class="alert-svg" viewBox="0 0 24 24" fill="none" stroke="var(--tinder-pink)"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <h3>The Kill Switch</h3>
+                        <p style="color:#CCC;">Auto-disable Wingman if guardrails cross stop rules.</p>
                     </div>
-                    <div class="risk-card rc-2">
-                        <h4 style="color:var(--accent-purple)">Security Risk</h4>
-                        <p style="font-size:0.9rem; color:#999; margin-top:5px;">Prompt injection. Mitigation: Untrusted
-                            bio.</p>
+
+                    <!-- Right Column: Secondary Risks Stacked -->
+                    <div class="risk-stack">
+                        <div class="risk-card rc-1">
+                            <h4 style="color:var(--tinder-pink)">Tech Risk</h4>
+                            <p style="font-size:0.9rem; color:#999; margin-top:5px;">Hallucination. Mitigation:
+                                Grounding.
+                            </p>
+                        </div>
+                        <div class="risk-card rc-2">
+                            <h4 style="color:var(--tinder-pink)">Security Risk</h4>
+                            <p style="font-size:0.9rem; color:#999; margin-top:5px;">Prompt injection. Mitigation:
+                                Untrusted
+                                bio.</p>
+                        </div>
                     </div>
                 </div>
             </section>

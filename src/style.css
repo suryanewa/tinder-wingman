@@ -660,21 +660,32 @@ p {
     filter: drop-shadow(0 0 20px rgba(254, 60, 114, 0.5));
 }
 
-.risk-row {
-    display: flex;
-    gap: 24px;
-    margin-top: 50px;
+.risk-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+    width: 100%;
+    max-width: 900px;
+    align-items: stretch;
     z-index: 1;
     position: relative;
 }
 
+.risk-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
 .risk-card {
-    flex: 1;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(254, 60, 114, 0.3);
     border-radius: 16px;
     padding: 24px;
     backdrop-filter: blur(10px);
+    text-align: left;
 }
 
 /* Slide 10: Gold */
