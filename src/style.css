@@ -566,11 +566,6 @@ p {
     align-items: center;
 }
 
-.action-row.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .action-btn {
     background: #FFFFFF;
     border: none;
