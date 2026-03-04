@@ -919,11 +919,13 @@ p {
     font-family: var(--font-heading);
     font-size: 1.05rem;
     font-weight: 700;
+    text-align: left;
 }
 
 .demo-chat-status {
     color: rgba(255, 255, 255, 0.58);
     font-size: 0.8rem;
+    text-align: left;
 }
 
 .demo-chat-thread {
