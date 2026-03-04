@@ -120,16 +120,18 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 5;
+    /* Sit on top of tiers */
     pointer-events: none;
     overflow: visible;
 }
 
 .h-conn {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.5);
-    stroke-width: 4;
+    stroke: #FFFFFF;
+    stroke-width: 6;
     stroke-dasharray: 12 12;
+    opacity: 0;
 }
 
 .impact-text {

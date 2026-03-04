@@ -122,12 +122,12 @@ function triggerSlideAnimation(indexh, direction) {
             gsap.fromTo(conns,
                 { opacity: 0, strokeDashoffset: 24 },
                 {
-                    opacity: 1, strokeDashoffset: 0, duration: 1, stagger: 0.2, delay: 1.5, ease: 'power2.out',
+                    opacity: 1, strokeDashoffset: 0, duration: 1.2, stagger: 0.3, delay: 1.5, ease: 'power2.out',
                     onComplete: () => {
                         // Infinite flowing animation
                         gsap.to(conns, {
                             strokeDashoffset: -24,
-                            duration: 1.5,
+                            duration: 1.2,
                             ease: "none",
                             repeat: -1
                         });
