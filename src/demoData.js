@@ -1,11 +1,40 @@
 export const demoSeed = 240310;
 
 export const demoProfile = {
-    id: 'emily-prakanazech-001',
-    name: 'Emily Prakanazech',
-    age: 27,
+    id: 'luna-001',
+    name: 'Luna',
+    age: 25,
     city: 'Brooklyn',
-    bio: 'Climber, coffee spot hunter, and trivia-night regular. Always up for a museum detour on Sundays.',
+    bio: '',
+    lookingFor: '😍 Long-term, open to short',
+    profileFacts: [],
+    profileScreens: [
+        {
+            id: 'intro',
+            meta: 'Looking for',
+            body: '',
+            highlight: '😍 Long-term, open to short',
+            bullets: [],
+            photoPosition: 'center center'
+        },
+        {
+            id: 'basics',
+            meta: 'Basics',
+            body: '',
+            highlight: '5\'8" • Designer • 8 mi away',
+            bullets: [],
+            photoPosition: 'center 40%'
+        },
+        {
+            id: 'anthem',
+            meta: 'Spotify Anthem',
+            body: '',
+            trackTitle: 'Stand Off',
+            trackArtist: 'MEMBA',
+            bullets: [],
+            photoPosition: 'center 22%'
+        }
+    ],
     prompts: [
         'Typical Sunday: farmers market, long walk, then trying a new cafe.',
         'I am overly competitive about board games but still cheerful about losing.'

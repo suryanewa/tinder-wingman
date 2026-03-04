@@ -747,80 +747,537 @@ p {
 }
 
 .demo-profile-layout {
-    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+    grid-template-columns: 390px auto minmax(0, 1fr);
+    align-items: center;
 }
 
-.demo-profile-card,
-.demo-inputs-card,
-.demo-phone-shell,
-.demo-suggestion-panel {
+.demo-phone-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.tinder-device {
+    width: 390px;
+    height: 800px;
+    min-width: 390px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background: #000;
+    border: 12px solid #1c1c1e;
+    box-shadow: 0 0 0 1px #3a3a3c, 0 30px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #fff;
+    position: relative;
+    transform-origin: center center;
+}
+
+.tinder-device::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 30px;
+    background: #1c1c1e;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 1000;
+}
+
+.tinder-status-bar {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 26px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    z-index: 101;
+    position: relative;
+}
+
+.tinder-appbar {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 101;
+    position: relative;
+}
+
+.tinder-wordmark {
+    color: var(--tinder-pink);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+.tinder-app-icons {
+    display: flex;
+    gap: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tinder-card-shell {
+    margin: 4px 0 0 0;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    flex: 1;
+    background: #111;
+    min-height: 0;
+    z-index: 1;
+}
+
+.tinder-progress {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    z-index: 3;
+}
+
+.tinder-progress-segment {
+    height: 3px;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 999px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.tinder-progress-segment.active {
+    background: #ffffff;
+}
+
+.tinder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    filter: saturate(1.03) contrast(1.04);
+}
+
+.tinder-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 100px 20px 160px;
+    color: #fff;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.45) 40%, rgba(0, 0, 0, 0.95) 90%);
+    pointer-events: none;
+}
+
+.tinder-photo-nav {
+    position: absolute;
+    top: 48px;
+    bottom: 0;
+    width: 24%;
+    border: none;
+    background: transparent;
+    color: transparent;
+    z-index: 4;
+}
+
+.tinder-photo-nav.prev {
+    left: 0;
+}
+
+.tinder-photo-nav.next {
+    right: 0;
+}
+
+.tinder-name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.tinder-name-row h3 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.tinder-up-arrow {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+}
+
+.tinder-name-row h3 span:last-child {
+    font-size: 1.7rem;
+    font-weight: 700;
+    opacity: 0.95;
+    margin-left: 4px;
+}
+
+.tinder-verified {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1da1f2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.tinder-bio {
+    font-size: 1rem;
+    line-height: 1.35;
+    margin-bottom: 8px;
+}
+
+.tinder-screen-body {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.tinder-screen-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+    background: #d5f4e7;
+    color: #137a4c;
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.tinder-looking-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tinder-looking {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #fff;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tinder-facts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.tinder-facts li::before {
+    content: '•';
+    margin-right: 7px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.tinder-anthem-card {
+    margin-top: 4px;
+    border-radius: 12px;
+    padding: 8px 10px;
+    background: rgba(9, 15, 22, 0.68);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tinder-anthem-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #63d573;
+}
+
+.tinder-anthem-title {
+    margin-top: 2px;
+    font-size: 0.88rem;
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+.tinder-anthem-artist {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.tinder-actions {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    z-index: 10;
+}
+
+.tinder-action-btn {
+    border-radius: 50%;
+    border: none;
+    background: #1A1A1C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    cursor: default;
+}
+
+.tinder-action-btn.small {
+    width: 44px;
+    height: 44px;
+}
+
+.tinder-action-btn.large {
+    width: 64px;
+    height: 64px;
+}
+
+.tinder-action-btn.small svg {
+    width: 24px;
+    height: 24px;
+}
+
+.tinder-action-btn.large svg {
+    width: 32px;
+    height: 32px;
+}
+
+.tinder-action-btn svg {
+    display: block;
+}
+
+.tinder-action-btn.rewind {
+    color: #f5b938;
+}
+
+.tinder-action-btn.nope {
+    color: #ff4b86;
+}
+
+.tinder-action-btn.star {
+    color: #21d4fd;
+}
+
+.tinder-action-btn.like {
+    color: #59d94a;
+}
+
+.tinder-action-btn.boost {
+    color: #a64dff;
+}
+
+.tinder-tabbar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #000;
+    color: rgba(255, 255, 255, 0.35);
+    z-index: 5;
+    padding-bottom: 20px;
+}
+
+.tinder-tabbar svg {
+    width: 28px;
+    height: 28px;
+}
+
+.tinder-tabbar svg:first-child {
+    color: var(--tinder-pink);
+}
+
+.tinder-swipe-hint {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.52);
+}
+
+.demo-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulseArrow 2s infinite ease-in-out;
+}
+
+@keyframes pulseArrow {
+    0% {
+        transform: translateX(0);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateX(5px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 0.7;
+    }
+}
+
+.demo-inputs-card {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 24px;
-    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    backdrop-filter: blur(32px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
 }
 
-.demo-profile-card {
-    padding: 30px;
+.demo-inputs-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    opacity: 0.4;
+}
+
+.demo-scanning-line {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 200%;
+    height: 150%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(254, 60, 114, 0.05) 50%, rgba(254, 60, 114, 0.3) 100%);
+    border-bottom: 2px solid rgba(254, 60, 114, 0.8);
+    transform: translateY(-100%);
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: screen;
+}
+
+.demo-inputs-card {
+    padding: 48px;
     display: flex;
     flex-direction: column;
     gap: 24px;
-}
-
-.demo-profile-header {
-    display: flex;
-    gap: 22px;
     align-items: flex-start;
+    text-align: left;
 }
 
-.demo-profile-photo {
-    width: 190px;
-    height: 190px;
-    object-fit: cover;
-    border-radius: 20px;
-    border: 2px solid rgba(254, 60, 114, 0.65);
-    box-shadow: 0 20px 50px rgba(254, 60, 114, 0.22);
-    flex-shrink: 0;
+.demo-inputs-card--wide {
+    min-height: 520px;
 }
 
-.demo-profile-name {
+.demo-inputs-card>* {
+    width: 100%;
+}
+
+.demo-inputs-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.demo-input-label {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: left;
+}
+
+.demo-input-value {
     font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 6px;
-}
-
-.demo-profile-meta {
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-}
-
-.demo-profile-bio {
     font-size: 1.05rem;
-    line-height: 1.55;
-    max-width: 62ch;
+    color: #fff;
+    text-align: left;
+    margin-top: -4px;
 }
 
 .demo-profile-sections {
     display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    grid-template-columns: 1fr;
+    margin-top: 8px;
 }
 
 .demo-profile-block {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 16px;
-    background: rgba(16, 16, 20, 0.48);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.demo-profile-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .demo-profile-block h4 {
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.65);
-    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 2px;
+    font-weight: 600;
 }
 
 .demo-list {
@@ -828,11 +1285,16 @@ p {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
+    text-align: left;
 }
 
 .demo-list li {
-    font-size: 0.95rem;
-    line-height: 1.4;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.88);
+    text-align: left;
+    width: 100%;
 }
 
 .chip-row {
@@ -843,111 +1305,195 @@ p {
 
 .demo-chip {
     border-radius: 999px;
-    padding: 6px 11px;
-    font-size: 0.83rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.07);
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    line-height: 1.2;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.2s ease;
+}
+
+.demo-chip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .chip-row.muted .demo-chip {
-    color: rgba(255, 255, 255, 0.65);
-    border-color: rgba(255, 255, 255, 0.12);
-}
-
-.demo-inputs-card {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.demo-inputs-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 4px;
-}
-
-.demo-input-label {
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.demo-input-value {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.45);
+    border-color: rgba(255, 255, 255, 0.08);
+    background: transparent;
 }
 
 .demo-input-footnote {
     margin-top: auto;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.65);
-    line-height: 1.45;
+    line-height: 1.35;
+    max-width: 30ch;
+    text-align: left;
+}
+
+.demo-inputs-card .chip-row {
+    justify-content: flex-start;
 }
 
 .demo-chat-layout {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    grid-template-columns: 1fr;
+    justify-items: center;
 }
 
-.demo-phone-shell {
-    padding: 20px;
+.demo-chat-phone {
+    width: 390px;
+    max-width: 100%;
+}
+
+.demo-chat-device {
+    height: 760px;
+    background: #000;
+    color: #fff;
+}
+
+.demo-telemetry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.demo-telemetry-node {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    min-height: 500px;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.demo-telemetry-node:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(254, 60, 114, 0.4);
+    transform: translateY(-2px);
+}
+
+.demo-telemetry-node svg {
+    color: rgba(254, 60, 114, 0.9);
+    filter: drop-shadow(0 0 12px rgba(254, 60, 114, 0.6));
+    animation: floatingIcon 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatingIcon {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-3px);
+    }
+}
+
+.demo-telemetry-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.demo-telemetry-node.blocked svg {
+    color: #ff3333;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 8px rgba(255, 51, 51, 0.4));
+}
+
+.demo-telemetry-node.blocked .demo-telemetry-label {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
 
 .demo-chat-topbar {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 14px;
+    border-bottom: 1px solid #1a1a1c;
+    background: #000;
+}
+
+.tinder-chat-back,
+.tinder-chat-more {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.55rem;
+}
+
+.tinder-chat-back {
+    border: none;
+    background: transparent;
+    cursor: default;
+    line-height: 1;
+}
+
+.tinder-chat-more {
+    margin-left: auto;
+    line-height: 1;
 }
 
 .demo-mini-avatar {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    object-fit: cover;
-    background: var(--tinder-gradient);
-    box-shadow: 0 0 20px rgba(254, 60, 114, 0.4);
+    background-color: #ff4b4b;
+    background-image: url('/images/wingman-demo-persona.png');
+    background-size: cover;
+    background-position: center top;
+    margin-right: 12px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 16px rgba(254, 60, 114, 0.3);
 }
 
 .demo-chat-match-name {
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 0.97rem;
     font-weight: 700;
     text-align: left;
 }
 
 .demo-chat-status {
-    color: rgba(255, 255, 255, 0.58);
-    font-size: 0.8rem;
-    text-align: left;
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 0.73rem;
+    font-weight: 500;
 }
 
 .demo-chat-thread {
-    flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     overflow-y: auto;
-    padding-right: 6px;
+    padding: 14px;
+    background: #000;
 }
 
 .demo-message {
-    max-width: 75%;
-    border-radius: 14px;
-    padding: 10px 12px;
-    font-size: 0.94rem;
+    max-width: 80%;
+    border-radius: 15px;
+    padding: 9px 12px;
+    font-size: 0.87rem;
     line-height: 1.35;
 }
 
 .demo-message.incoming {
     align-self: flex-start;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     color: #fff;
 }
 
@@ -955,38 +1501,66 @@ p {
     align-self: flex-end;
     background: linear-gradient(135deg, rgba(254, 60, 114, 0.9), rgba(255, 107, 107, 0.9));
     color: #fff;
+    text-align: left;
+}
+
+.demo-inline-suggestions-wrap {
+    border-top: 1px solid #1a1a1c;
+    padding: 10px 12px 8px;
+    background: #0a0a0c;
+}
+
+.demo-inline-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.demo-inline-suggestions-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.52);
+    margin-bottom: 0;
+}
+
+.demo-inline-suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
 .demo-composer {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 12px;
+    padding: 10px 12px 24px;
     display: flex;
+    align-items: flex-end;
     gap: 10px;
+    background: #0a0a0c;
 }
 
 .demo-composer textarea {
     flex: 1;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(10, 10, 12, 0.7);
+    border-radius: 20px;
+    border: none;
+    background: #1a1a1c;
     color: #fff;
     resize: none;
-    padding: 10px 12px;
+    overflow: hidden;
+    padding: 12px 16px;
     font-family: var(--font-body);
-    font-size: 0.92rem;
-}
-
-.demo-send-btn,
-.demo-regenerate-btn {
-    border: none;
-    border-radius: 12px;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.3;
 }
 
 .demo-send-btn {
-    min-width: 96px;
+    border: none;
+    border-radius: 999px;
+    min-width: 72px;
+    height: 40px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    cursor: pointer;
     background: var(--tinder-gradient);
     color: #fff;
 }
@@ -996,36 +1570,29 @@ p {
     cursor: not-allowed;
 }
 
-.demo-suggestion-panel {
-    padding: 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.demo-suggestion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.demo-suggestion-header h3 {
-    font-size: 1.25rem;
-}
-
 .demo-regenerate-btn {
-    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
     background: rgba(255, 255, 255, 0.13);
     color: #fff;
+    cursor: pointer;
+}
+
+.demo-regenerate-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .demo-tone-selector {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 20px;
-    font-size: 0.88rem;
+    margin: 8px 0 10px;
+    font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.78);
 }
 
@@ -1059,20 +1626,18 @@ p {
     flex-direction: column;
     gap: 10px;
 }
-
 .demo-suggestion {
     border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 14px;
-    padding: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 9px 10px;
     text-align: left;
     color: #fff;
     cursor: pointer;
-    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    transition: border-color 0.2s, background 0.2s;
 }
 
 .demo-suggestion:hover {
-    transform: translateY(-2px);
     border-color: rgba(254, 60, 114, 0.7);
     background: rgba(254, 60, 114, 0.1);
 }
@@ -1084,23 +1649,8 @@ p {
 
 .demo-suggestion-text {
     display: block;
-    font-size: 0.92rem;
-    line-height: 1.4;
-}
-
-.demo-suggestion-why {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(255, 255, 255, 0.65);
-}
-
-.demo-hint {
-    margin-top: auto;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.84rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
 }
 
 @media (max-width: 1180px) {
@@ -1110,8 +1660,16 @@ p {
         grid-template-columns: 1fr;
     }
 
-    .demo-profile-sections {
-        grid-template-columns: 1fr;
+    .tinder-device {
+        margin: 0 auto;
+    }
+
+    .demo-inputs-card--wide {
+        min-height: 0;
+    }
+
+    .demo-chat-layout {
+        justify-items: center;
     }
 }
 
@@ -1122,18 +1680,43 @@ p {
         padding: 44px 16px 92px !important;
     }
 
-    .demo-profile-header {
-        flex-direction: column;
+    .demo-profile-slide,
+    .demo-profile-layout {
+        grid-template-columns: minmax(390px, auto) 1fr;
+        gap: 20px;
     }
 
-    .demo-profile-photo {
-        width: 140px;
-        height: 140px;
+    .tinder-device {
+        transform: scale(0.9);
+        width: 328px;
+        height: 680px;
+        border-width: 7px;
     }
 
-    .demo-profile-name {
-        font-size: 1.6rem;
+    .demo-chat-device {
+        height: 690px;
     }
+
+    .tinder-name-row h3 {
+        font-size: 1.7rem;
+    }
+
+    .tinder-action-btn {
+        width: 46px;
+        height: 46px;
+    }
+
+    .demo-chat-topbar {
+        padding: 8px 12px;
+    }
+
+    .demo-suggestion-text {
+        font-size: 0.76rem;
+    }
+}
+
+.hidden {
+    display: none !important;
 }
 
 /* Progress */

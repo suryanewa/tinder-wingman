@@ -37,13 +37,20 @@ const demoChat = {
     suggestions: []
 };
 
+const demoProfileView = {
+    currentScreen: 0,
+    dragStartX: 0,
+    dragCurrentX: 0,
+    dragging: false
+};
+
 const demoElements = {
     thread: null,
     suggestions: null,
     draftInput: null,
     sendButton: null,
     regenerateButton: null,
-    toneLabel: null
+    toneButtons: []
 };
 
 deck.initialize().then(() => {
@@ -293,13 +300,73 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .gold-card`, { y: 100, opacity: 0, rotationY: -30 }, { y: 0, opacity: 1, rotationY: 0, duration: 1, ease: 'power3.out', delay: 0.8 });
         gsap.to(`${slideSel} .glare`, { x: '400%', duration: 1.5, delay: 2, ease: 'power1.inOut', repeat: -1, repeatDelay: 3 });
     } else if (state === 'slide-11') {
-        gsap.fromTo(`${slideSel} .demo-profile-card`, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.2 });
-        gsap.fromTo(`${slideSel} .demo-inputs-card`, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, delay: 0.4 });
-        gsap.fromTo(`${slideSel} .demo-chip`, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, stagger: 0.04, delay: 0.55 });
+        // High-Budget 3D Presentation Entry
+        gsap.fromTo(`${slideSel} .tinder-device`,
+            { y: 800, z: -400, rotationY: -45, rotationX: 20, rotationZ: -10, opacity: 0, transformPerspective: 1200 },
+            { y: 0, z: 0, rotationY: 0, rotationX: 0, rotationZ: 0, opacity: 1, duration: 1.8, ease: 'power4.out', delay: 0.1 }
+        );
+        gsap.fromTo(`${slideSel} .demo-inputs-card`,
+            { x: 200, opacity: 0, scale: 0.8, rotationY: 20, transformPerspective: 1000 },
+            { x: 0, opacity: 1, scale: 1, rotationY: 0, duration: 1.5, ease: 'back.out(1.2)', delay: 0.4 }
+        );
+
+        // AI Parsing Sequence with Text Scramble Effect
+        const label = document.querySelector(`${slideSel} .demo-input-label`);
+        if (label) {
+            const originalText = label.textContent;
+            gsap.set(label, { textContent: '' });
+            gsap.to(label, { textContent: originalText, duration: 1.2, ease: 'none', delay: 0.9 });
+        }
+
+        // Dynamic Telemetry Node Staggering
+        gsap.fromTo(`${slideSel} .demo-telemetry-node`,
+            { scale: 0.2, opacity: 0, y: 40, rotation: -10 },
+            { scale: 1, opacity: 1, y: 0, rotation: 0, duration: 0.8, stagger: { each: 0.15, from: "start" }, ease: 'back.out(2)', delay: 1.2 }
+        );
+
+        // Threat/Blocked Node Pulsing
+        gsap.to(`${slideSel} .demo-telemetry-node.blocked`,
+            { scale: 1.1, filter: 'brightness(1.8) drop-shadow(0 0 20px rgba(255, 51, 51, 0.8))', duration: 0.3, yoyo: true, repeat: 3, delay: 2.2 }
+        );
+
+        // Continuous Scanning Sweeper
+        const scanningLine = document.querySelector(`${slideSel} .demo-scanning-line`);
+        if (scanningLine) {
+            gsap.fromTo(scanningLine,
+                { y: '-10%', opacity: 0 },
+                { y: '160%', opacity: 1, duration: 2.0, ease: 'power2.inOut', repeat: -1, repeatDelay: 1.5, delay: 0.8 }
+            );
+        }
+
+        gsap.fromTo(`${slideSel} .tinder-swipe-hint`,
+            { y: -20, opacity: 0, letterSpacing: '0.2em' },
+            { y: 0, opacity: 1, letterSpacing: '0', duration: 1, ease: 'power3.out', delay: 1.8 }
+        );
+
     } else if (state === 'slide-12') {
-        gsap.fromTo(`${slideSel} .demo-phone-shell`, { x: -35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.2 });
-        gsap.fromTo(`${slideSel} .demo-suggestion-panel`, { x: 35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.35 });
-        gsap.fromTo(`${slideSel} .demo-suggestion`, { y: 16, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.45, delay: 0.45 });
+        const device = document.querySelector(`${slideSel} .demo-chat-device`);
+        if (device) {
+            gsap.fromTo(device,
+                { y: 200, opacity: 0, scale: 0.9 },
+                { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'elastic.out(1, 0.7)', delay: 0.1 }
+            );
+        }
+
+        const thread = document.querySelector(`${slideSel} .demo-chat-thread`);
+        if (thread) {
+            gsap.fromTo(thread,
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.5)', delay: 0.5 }
+            );
+        }
+
+        const suggestionsWrap = document.querySelector(`${slideSel} .demo-inline-suggestions-wrap`);
+        if (suggestionsWrap) {
+            gsap.fromTo(suggestionsWrap,
+                { y: '100%', opacity: 0 },
+                { y: '0%', opacity: 1, duration: 1, ease: 'power4.out', delay: 0.8 }
+            );
+        }
     }
 }
 
@@ -314,6 +381,7 @@ function setupAnimations() {
         }
 
         syncFixedUi(event.indexh);
+        if (event.indexh === 10) resetDemoProfileCarousel();
         if (event.indexh === 11) resetDemoChat();
         triggerSlideAnimation(event.indexh, isNext ? 'next' : 'prev');
     });
@@ -335,6 +403,7 @@ function setupDrag() {
 
     document.addEventListener('pointerdown', (event) => {
         if (!event.target.closest('section')) return;
+        if (event.target.closest('.no-slide-drag')) return;
         if (event.target.closest('button') || event.target.closest('a') || event.target.closest('textarea')) return;
         isDragging = true;
         startX = event.clientX;
@@ -405,7 +474,9 @@ function syncFixedUi(indexh) {
 
 function setupDemoSlides() {
     renderDemoProfile();
+    setupDemoProfileCarousel();
     setupDemoChat();
+    resetDemoProfileCarousel();
     resetDemoChat();
 }
 
@@ -424,9 +495,8 @@ function renderDemoProfile() {
         }, { once: true });
     }
 
-    const name = document.getElementById('demo-profile-name');
-    const meta = document.getElementById('demo-profile-meta');
-    const bio = document.getElementById('demo-profile-bio');
+    const name = document.getElementById('demo-tinder-name');
+    const age = document.getElementById('demo-tinder-age');
     const promptList = document.getElementById('demo-profile-prompts');
     const interestList = document.getElementById('demo-profile-interests');
     const labelList = document.getElementById('demo-profile-labels');
@@ -435,8 +505,7 @@ function renderDemoProfile() {
     const matchName = document.getElementById('demo-chat-match-name');
 
     if (name) name.textContent = demoProfile.name;
-    if (meta) meta.textContent = `${demoProfile.age} · ${demoProfile.city}`;
-    if (bio) bio.textContent = demoProfile.bio;
+    if (age) age.textContent = demoProfile.age;
     if (tone) tone.textContent = demoUserPrefs.tone;
     if (matchName) matchName.textContent = demoProfile.name;
 
@@ -471,6 +540,155 @@ function renderDemoProfile() {
     }
 }
 
+function getProfileScreens() {
+    return Array.isArray(demoProfile.profileScreens) && demoProfile.profileScreens.length > 0
+        ? demoProfile.profileScreens
+        : [
+            {
+                id: 'fallback',
+                meta: 'Looking for',
+                body: demoProfile.bio,
+                highlight: demoProfile.lookingFor,
+                bullets: demoProfile.profileFacts
+            }
+        ];
+}
+
+function resetDemoProfileCarousel() {
+    goToDemoProfileScreen(0, false);
+}
+
+function setupDemoProfileCarousel() {
+    const carousel = document.getElementById('demo-profile-carousel');
+    const photo = document.getElementById('demo-profile-photo');
+    if (!carousel || !photo) return;
+    if (carousel.dataset.bound === 'true') return;
+    carousel.dataset.bound = 'true';
+
+    carousel.querySelector('.tinder-photo-nav.prev')?.addEventListener('click', () => {
+        goToDemoProfileScreen(demoProfileView.currentScreen - 1);
+    });
+
+    carousel.querySelector('.tinder-photo-nav.next')?.addEventListener('click', () => {
+        goToDemoProfileScreen(demoProfileView.currentScreen + 1);
+    });
+
+    carousel.querySelectorAll('[data-profile-screen]').forEach((segment) => {
+        segment.addEventListener('click', () => {
+            const target = Number(segment.dataset.profileScreen);
+            if (Number.isFinite(target)) goToDemoProfileScreen(target);
+        });
+    });
+
+    carousel.addEventListener('pointerdown', (event) => {
+        if (event.target.closest('button')) return;
+        demoProfileView.dragging = true;
+        demoProfileView.dragStartX = event.clientX;
+        demoProfileView.dragCurrentX = 0;
+        carousel.setPointerCapture(event.pointerId);
+    });
+
+    carousel.addEventListener('pointermove', (event) => {
+        if (!demoProfileView.dragging) return;
+        demoProfileView.dragCurrentX = event.clientX - demoProfileView.dragStartX;
+        gsap.set(photo, { x: demoProfileView.dragCurrentX * 0.12 });
+    });
+
+    const endDrag = (event) => {
+        if (!demoProfileView.dragging) return;
+        demoProfileView.dragging = false;
+        if (event.pointerId !== undefined) carousel.releasePointerCapture(event.pointerId);
+
+        const delta = demoProfileView.dragCurrentX;
+        demoProfileView.dragCurrentX = 0;
+        gsap.to(photo, { x: 0, duration: 0.24, ease: 'power2.out' });
+
+        if (delta > 48) goToDemoProfileScreen(demoProfileView.currentScreen - 1);
+        if (delta < -48) goToDemoProfileScreen(demoProfileView.currentScreen + 1);
+    };
+
+    carousel.addEventListener('pointerup', endDrag);
+    carousel.addEventListener('pointercancel', endDrag);
+}
+
+function goToDemoProfileScreen(targetIndex, animate = true) {
+    const screens = getProfileScreens();
+    if (!screens.length) return;
+
+    const normalized = (targetIndex + screens.length) % screens.length;
+    demoProfileView.currentScreen = normalized;
+    const screen = screens[normalized];
+
+    const photo = document.getElementById('demo-profile-photo');
+    const meta = document.getElementById('demo-tinder-screen-meta');
+    const body = document.getElementById('demo-tinder-screen-body');
+    const highlight = document.getElementById('demo-tinder-screen-highlight');
+    const bullets = document.getElementById('demo-tinder-screen-bullets');
+    const badge = document.getElementById('demo-tinder-screen-badge');
+    const anthem = document.getElementById('demo-tinder-anthem');
+    const trackTitle = document.getElementById('demo-tinder-track-title');
+    const trackArtist = document.getElementById('demo-tinder-track-artist');
+
+    if (photo && screen.photoPosition) {
+        photo.style.objectPosition = screen.photoPosition;
+        if (animate) {
+            gsap.fromTo(photo, { opacity: 0.84, scale: 1.03 }, { opacity: 1, scale: 1, duration: 0.28, ease: 'power2.out' });
+        }
+    }
+
+    if (meta) {
+        meta.textContent = screen.meta || '';
+        meta.style.display = screen.meta ? 'flex' : 'none';
+        meta.hidden = !screen.meta;
+    }
+
+    if (body) {
+        const bodyText = screen.body || '';
+        body.textContent = bodyText;
+        body.style.display = bodyText ? 'block' : 'none';
+        body.hidden = !bodyText;
+    }
+
+    if (highlight) {
+        const highlightText = screen.highlight || '';
+        highlight.textContent = highlightText;
+        highlight.style.display = highlightText ? 'inline-flex' : 'none';
+        highlight.hidden = !highlightText;
+    }
+
+    if (bullets) {
+        const listItems = Array.isArray(screen.bullets) && screen.bullets.length ? screen.bullets : [];
+        bullets.innerHTML = '';
+        listItems.forEach((item) => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            bullets.appendChild(li);
+        });
+        bullets.style.display = listItems.length === 0 ? 'none' : 'flex';
+        bullets.hidden = listItems.length === 0;
+    }
+
+    if (badge) {
+        const badgeText = screen.badge || '';
+        badge.textContent = badgeText;
+        badge.style.display = badgeText ? 'inline-block' : 'none';
+        badge.hidden = !badgeText;
+    }
+
+    if (anthem && trackTitle && trackArtist) {
+        const hasTrack = Boolean(screen.trackTitle);
+        anthem.style.display = hasTrack ? 'block' : 'none';
+        anthem.hidden = !hasTrack;
+        trackTitle.textContent = hasTrack ? screen.trackTitle : '';
+        trackArtist.textContent = hasTrack ? screen.trackArtist || '' : '';
+    }
+
+    const slide11 = document.querySelector('section[data-state="slide-11"]');
+    slide11?.querySelectorAll('[data-profile-screen]').forEach((segment) => {
+        segment.classList.toggle('active', Number(segment.dataset.profileScreen) === normalized);
+    });
+}
+
 function setupDemoChat() {
     demoElements.thread = document.getElementById('demo-chat-thread');
     demoElements.suggestions = document.getElementById('demo-suggestions');
@@ -478,9 +696,10 @@ function setupDemoChat() {
     demoElements.sendButton = document.getElementById('demo-send-btn');
     demoElements.regenerateButton = document.getElementById('demo-regenerate-btn');
     demoElements.toneButtons = document.querySelectorAll('.demo-tone-btn');
-    demoElements.toneValueLabel = document.getElementById('demo-input-tone');
 
-    if (!demoElements.thread || !demoElements.suggestions || !demoElements.draftInput || !demoElements.sendButton || !demoElements.regenerateButton) return;
+    if (!demoElements.thread || !demoElements.suggestions || !demoElements.draftInput || !demoElements.sendButton) return;
+    if (demoElements.suggestions.dataset.bound === 'true') return;
+    demoElements.suggestions.dataset.bound = 'true';
 
     demoElements.suggestions.addEventListener('click', (event) => {
         const button = event.target.closest('button[data-suggestion-id]');
@@ -488,7 +707,9 @@ function setupDemoChat() {
         const suggestion = demoChat.suggestions.find((entry) => entry.id === button.dataset.suggestionId);
         if (!suggestion) return;
 
+        demoChat.state = createChatState(initialDemoMessages);
         demoChat.state = applySuggestionToDraft(demoChat.state, suggestion);
+        renderDemoThread();
         renderDemoSuggestions();
         renderDraftComposer();
     });
@@ -506,7 +727,6 @@ function setupDemoChat() {
     });
 
     demoElements.sendButton.addEventListener('click', sendCurrentDraft);
-
     if (demoElements.toneButtons) {
         demoElements.toneButtons.forEach((btn) => {
             btn.addEventListener('click', () => {
@@ -516,11 +736,6 @@ function setupDemoChat() {
                     ...demoChat.state,
                     selectedSuggestionId: null
                 };
-
-                if (demoElements.toneValueLabel) {
-                    demoElements.toneValueLabel.textContent = demoChat.tone;
-                }
-
                 demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
                 renderDemoSuggestions();
                 renderDraftComposer();
@@ -528,16 +743,18 @@ function setupDemoChat() {
         });
     }
 
-    demoElements.regenerateButton.addEventListener('click', () => {
-        demoChat.seedOffset += 1;
-        demoChat.state = {
-            ...demoChat.state,
-            selectedSuggestionId: null
-        };
-        demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
-        renderDemoSuggestions();
-        renderDraftComposer();
-    });
+    if (demoElements.regenerateButton) {
+        demoElements.regenerateButton.addEventListener('click', () => {
+            demoChat.seedOffset += 1;
+            demoChat.state = {
+                ...demoChat.state,
+                selectedSuggestionId: null
+            };
+            demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
+            renderDemoSuggestions();
+            renderDraftComposer();
+        });
+    }
 }
 
 function sendCurrentDraft() {
@@ -549,11 +766,11 @@ function sendCurrentDraft() {
         renderDraftComposer();
         if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
 
-        // Auto-reply simulation
-        setTimeout(() => {
-            demoChat.state = {
-                ...demoChat.state,
-                messages: [
+    // Auto-reply simulation
+    setTimeout(() => {
+        demoChat.state = {
+            ...demoChat.state,
+            messages: [
                     ...demoChat.state.messages,
                     {
                         id: `msg-${demoChat.state.messages.length + 1}`,
@@ -561,10 +778,10 @@ function sendCurrentDraft() {
                         text: "What's your number?"
                     }
                 ]
-            };
-            renderDemoThread();
-            if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
-        }, 1500);
+        };
+        renderDemoThread();
+        if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
+    }, 1500);
     } else {
         renderDraftComposer();
     }
@@ -606,12 +823,7 @@ function renderDemoSuggestions() {
         text.className = 'demo-suggestion-text';
         text.textContent = suggestion.text;
 
-        const why = document.createElement('span');
-        why.className = 'demo-suggestion-why';
-        why.textContent = suggestion.why;
-
         button.appendChild(text);
-        button.appendChild(why);
         demoElements.suggestions.appendChild(button);
     });
 }
