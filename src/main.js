@@ -116,6 +116,14 @@ function triggerSlideAnimation(indexh, direction) {
             { y: 300, opacity: 0, rotationX: 80 },
             { y: 0, opacity: 1, rotationX: 45, stagger: 0.2, duration: 1.2, ease: 'power3.out', delay: 0.7 }
         );
+
+        const conns = document.querySelectorAll(`${slideSel} .h-conn`);
+        if (conns.length > 0) {
+            gsap.fromTo(conns,
+                { opacity: 0, strokeDashoffset: 50 },
+                { opacity: 1, strokeDashoffset: 0, duration: 1, stagger: 0.2, delay: 1.5, ease: 'power2.out' }
+            );
+        }
     }
     else if (state === 'slide-5') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.4 });
