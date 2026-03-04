@@ -112,10 +112,44 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
 
-        gsap.fromTo(`${slideSel} .h-tier`,
-            { y: 300, opacity: 0, rotationX: 80 },
-            { y: 0, opacity: 1, rotationX: 45, stagger: 0.2, duration: 1.2, ease: 'power3.out', delay: 0.7 }
-        );
+        const tiers = document.querySelectorAll(`${slideSel} .h-tier`);
+        if (tiers.length > 0) {
+            gsap.fromTo(tiers,
+                { y: 300, opacity: 0, rotationX: 80, rotationZ: -10 },
+                {
+                    y: 0, opacity: 1, rotationX: 45, rotationZ: -15, stagger: 0.2, duration: 1.2, ease: 'power3.out', delay: 0.7,
+                    onComplete: () => {
+                        tiers.forEach(tier => {
+                            tier.addEventListener('mouseenter', () => {
+                                gsap.to(tier, {
+                                    rotationX: 0,
+                                    rotationZ: 0,
+                                    z: 60,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                    duration: 0.5,
+                                    ease: 'back.out(1.2)',
+                                    overwrite: true
+                                });
+                                tier.style.zIndex = "20";
+                            });
+                            tier.removeEventListener('mouseleave', null); // Clean up placeholder
+                            tier.addEventListener('mouseleave', () => {
+                                gsap.to(tier, {
+                                    rotationX: 45,
+                                    rotationZ: -15,
+                                    z: 0,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                                    duration: 0.5,
+                                    ease: 'power2.inOut',
+                                    overwrite: true
+                                });
+                                tier.style.zIndex = "";
+                            });
+                        });
+                    }
+                }
+            );
+        }
 
         const conns = document.querySelectorAll(`${slideSel} .h-conn`);
         if (conns.length > 0) {
