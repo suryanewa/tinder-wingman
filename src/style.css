@@ -401,6 +401,25 @@ p {
 }
 
 /* Slide 5: Success Metric */
+.metric-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+#clock-svg {
+    width: 120px;
+    height: 120px;
+    color: var(--accent-green);
+    filter: drop-shadow(0 0 30px rgba(0, 230, 118, 0.6));
+}
+
+#hour-hand,
+#minute-hand {
+    transform-origin: 50% 50%;
+}
+
 .glow-metric {
     font-size: 10rem;
     font-family: var(--font-heading);
