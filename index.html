@@ -120,28 +120,36 @@
 
             <!-- Slide 5: Success -->
             <section data-state="slide-5" class="slide-fullscreen dark-theme">
-                <h2 class="section-title">North Star Metric</h2>
-                <div class="metric-wrapper">
-                    <div class="glow-metric">24h</div>
-                    <svg id="clock-svg" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
-                        <path id="hour-hand" d="M50 50 L50 28" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <path id="minute-hand" d="M50 50 L50 18" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <circle cx="50" cy="50" r="2.5" fill="currentColor" />
-                    </svg>
-                </div>
-                <p class="body-text">First-message Reply Rate within 24 hours.</p>
-                <div class="glass-container" style="margin-top:40px; padding: 20px 40px;">
-                    <h4 style="color:var(--tinder-coral)">Critical Guardrails <svg class="inline-icon"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            style="width:20px; height:20px; vertical-align:middle; margin-left:8px;">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg></h4>
-                    <p style="font-size:0.9rem; color:#CCC;">Report rate, Immediate unmatch rate, Safety classifier
-                        hit-rate.</p>
+                <div class="metric-grid">
+                    <div class="metric-col north-star">
+                        <h2 class="section-title">North Star Metric</h2>
+                        <div class="metric-wrapper">
+                            <div class="glow-metric">24h</div>
+                            <svg id="clock-svg" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
+                                <path id="hour-hand" d="M50 50 L50 28" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <path id="minute-hand" d="M50 50 L50 18" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <circle cx="50" cy="50" r="2.5" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <p class="body-text">First-message Reply Rate within 24 hours.</p>
+                    </div>
+
+                    <div class="metric-col guardrails">
+                        <h2 class="section-title" style="color:var(--tinder-coral)">Critical Guardrails</h2>
+                        <div class="shield-wrapper">
+                            <div class="glow-metric"
+                                style="color:var(--tinder-coral); text-shadow: 0 0 60px rgba(254,60,114,0.5)">SAFE</div>
+                            <svg class="shield-main-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="M9 12l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <p class="body-text">Report rate, Unmatch rate, Safety classifier hit-rate.</p>
+                    </div>
                 </div>
             </section>
 

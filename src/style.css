@@ -400,19 +400,47 @@ p {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
-/* Slide 5: Success Metric */
-.metric-wrapper {
+/* Slide 5: Success Metric Redesign */
+.metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    width: 90%;
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.metric-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.metric-wrapper,
+.shield-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 35px;
+    margin: 20px 0;
+}
+
+#clock-svg,
+.shield-main-icon {
+    width: 140px;
+    height: 140px;
 }
 
 #clock-svg {
-    width: 140px;
-    height: 140px;
     color: var(--accent-green);
     filter: drop-shadow(0 0 30px rgba(0, 230, 118, 0.6));
+}
+
+.shield-main-icon {
+    color: var(--tinder-coral);
+    filter: drop-shadow(0 0 30px rgba(254, 60, 114, 0.6));
 }
 
 #hour-hand,
@@ -421,13 +449,26 @@ p {
 }
 
 .glow-metric {
-    font-size: 10rem;
+    font-size: 8rem;
     font-family: var(--font-heading);
-    color: var(--accent-green);
-    text-shadow: 0 0 60px rgba(0, 230, 118, 0.5);
-    margin: 20px 0;
     font-weight: 900;
     line-height: 1;
+}
+
+.north-star .glow-metric {
+    color: var(--accent-green);
+    text-shadow: 0 0 60px rgba(0, 230, 118, 0.5);
+}
+
+.guardrails .glow-metric {
+    color: var(--tinder-coral);
+    text-shadow: 0 0 60px rgba(254, 60, 114, 0.5);
+}
+
+.metric-col .body-text {
+    max-width: 400px;
+    margin-top: 20px;
+    opacity: 0.8;
 }
 
 /* Slide 7: Flow */

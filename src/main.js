@@ -172,18 +172,27 @@ function triggerSlideAnimation(indexh, direction) {
         }
     }
     else if (state === 'slide-5') {
-        gsap.fromTo(`${slideSel} .section-title`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.4 });
-        gsap.fromTo(`${slideSel} .glow-metric`, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: 'elastic.out(1, 0.5)', delay: 0.6 });
-        gsap.to(`${slideSel} .glow-metric`, { textShadow: '0 0 80px rgba(0,230,118,0.8)', duration: 1.5, yoyo: true, repeat: -1, delay: 1.6 });
+        // Staggered column entrance
+        gsap.fromTo(`${slideSel} .metric-col`,
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, stagger: 0.3, ease: 'power2.out', delay: 0.2 }
+        );
 
-        // Clock Animation
-        gsap.fromTo(`${slideSel} #clock-svg`, { scale: 0, opacity: 0, rotate: -90 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', delay: 0.8 });
+        gsap.fromTo(`${slideSel} .glow-metric`,
+            { scale: 0.5, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 1, ease: 'elastic.out(1, 0.5)', delay: 0.6, stagger: 0.3 }
+        );
+
+        // North Star - Clock Animation
+        gsap.fromTo(`${slideSel} #clock-svg`, { scale: 0, opacity: 0, rotate: -90 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', delay: 1 });
         gsap.to(`${slideSel} #hour-hand`, { rotation: 360, duration: 12, repeat: -1, ease: "none", svgOrigin: "50 50" });
         gsap.to(`${slideSel} #minute-hand`, { rotation: 360, duration: 2, repeat: -1, ease: "none", svgOrigin: "50 50" });
 
-        gsap.fromTo(`${slideSel} .inline-icon`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, stagger: 0.4, ease: 'back.out(2)', delay: 0.6 });
-        gsap.fromTo(`${slideSel} .body-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.2 });
-        gsap.fromTo(`${slideSel} .glass-container`, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 1.5 });
+        // Guardrails - Shield Animation
+        gsap.fromTo(`${slideSel} .shield-main-icon`, { scale: 0, opacity: 0, rotate: 15 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', delay: 1.3 });
+        gsap.to(`${slideSel} .shield-main-icon`, { y: -5, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 2.3 });
+
+        gsap.fromTo(`${slideSel} .body-text`, { opacity: 0, y: 10 }, { opacity: 0.8, y: 0, duration: 1, delay: 1.6, stagger: 0.3 });
     }
     else if (state === 'slide-6') {
         gsap.fromTo(`${slideSel} .split-left`, { x: '-100%' }, { x: '0%', duration: 0.8, ease: 'power3.out', delay: 0.2 });
