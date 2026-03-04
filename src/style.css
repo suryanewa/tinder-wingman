@@ -479,16 +479,16 @@ p {
 
 /* Slide 7: Flow */
 .flow-svg {
-    width: 600px;
-    height: 350px;
-    margin-top: 50px;
+    width: 900px;
+    height: 500px;
+    margin-top: 30px;
     overflow: visible;
 }
 
 .flow-path {
     fill: none;
     stroke: var(--tinder-pink);
-    stroke-width: 4;
+    stroke-width: 6;
     stroke-dasharray: 12 12;
     animation: dash 20s linear infinite;
 }
@@ -502,13 +502,13 @@ p {
 .flow-node {
     fill: #1A1A1A;
     stroke: rgba(255, 255, 255, 0.15);
-    stroke-width: 3;
+    stroke-width: 4;
 }
 
 .flow-text {
     fill: #FFF;
     font-family: var(--font-heading);
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     text-anchor: middle;
     dominant-baseline: middle;
