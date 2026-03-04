@@ -733,7 +733,7 @@ p {
 .demo-chat-slide {
     align-items: center !important;
     justify-content: center !important;
-    padding: 56px 64px 102px !important;
+    padding: 100px 64px 80px !important;
     gap: 22px;
 }
 
