@@ -111,8 +111,7 @@ p {
     font-size: 1.5rem;
     opacity: 0.8;
     font-weight: 300;
-    margin-top: 30px;
-    /* Increased spacing between tiers */
+    margin-top: 10px;
 }
 
 .hierarchy-connectors {
