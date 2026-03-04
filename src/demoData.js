@@ -33,19 +33,34 @@ const lineLibrary = {
         { id: 'p5', template: 'You had me at "{prompt_hook}". What is your current top recommendation?', why: ['prompt answer'] },
         { id: 'p6', template: 'Fast debate: best post-{interest} snack. I need your official ranking.', why: ['interest'] }
     ],
-    direct: [
-        { id: 'd1', template: 'I liked your profile. Want to swap favorite {interest} spots this week?', why: ['interest'] },
-        { id: 'd2', template: 'You mentioned "{prompt_hook}" - what is your go-to version of that?', why: ['prompt answer'] },
-        { id: 'd3', template: 'Your {caption_label} photo stood out. What made that moment memorable?', why: ['photo label'] },
-        { id: 'd4', template: 'I am planning a {city} weekend list. What should go at the top?', why: ['city'] },
-        { id: 'd5', template: 'If you had one free hour this weekend, what would you do first?', why: ['bio'] }
+    raunchy: [
+        { id: 'r1', template: "Hello there. I must say, your profile pictures have me intrigued. I can't help but imagine what you're like in person.", why: ['photo', 'bio'] },
+        { id: 'r2', template: "You look like the kind of person who knows how to make a night unforgettable. I'd love to find out.", why: ['bio'] },
+        { id: 'r3', template: "I can't stop thinking about your lips. I wonder what they'd feel like against mine.", why: ['photo'] },
+        { id: 'r4', template: "Your profile says you're into {interest}. I'm up for an *adventure* if you are. What do you say?", why: ['interest'] },
+        { id: 'r5', template: "I'd love to take you out, but I'd rather take you to my place and see what happens.", why: ['bio'] },
+        { id: 'r6', template: "Your eyes are doing things to me I can't even describe. I'd love to get to know you better.", why: ['photo'] },
+        { id: 'r7', template: "I hope you're ready for a wild night, because I sure am. What are you up for?", why: ['bio'] },
+        { id: 'r8', template: "Your smile is almost as tempting as the thought of you naked. I'd love to see what you're hiding under those clothes.", why: ['photo'] },
+        { id: 'r9', template: "I'm not one for small talk. I'd rather get to the point and see where this goes.", why: ['bio'] },
+        { id: 'r10', template: "You look like you could teach me a few things I've only dreamed about. I'm up for learning.", why: ['bio'] },
+        { id: 'r11', template: "I'm not usually this forward, but you make me want to break the rules. What do you say?", why: ['bio'] },
+        { id: 'r12', template: "I'd love to explore every inch of your body, slowly and carefully. I want to know what makes you tick.", why: ['photo'] },
+        { id: 'r13', template: "You have a look in your eyes that says you're up for anything. I'd love to see what you're up for.", why: ['photo'] },
+        { id: 'r14', template: "I can't stop thinking about what your touch might feel like. I wonder if you're as soft as you look.", why: ['photo'] },
+        { id: 'r15', template: "Your body is a masterpiece, and I'd love to take my time admiring it.", why: ['photo'] },
+        { id: 'r16', template: "I'm not just looking for a good time, I'm looking for a *great* time. What do you say?", why: ['bio'] },
+        { id: 'r17', template: "I'd love to see how your lips taste when I kiss them. I bet they're as sweet as they look.", why: ['photo'] },
+        { id: 'r18', template: "Your profile makes me want to know more about you. I'd love to take you out and get to know you better.", why: ['bio'] },
+        { id: 'r19', template: "I can't help but imagine what it would be like to be wrapped in your arms. I'd love to find out.", why: ['photo'] },
+        { id: 'r20', template: "I'm not just looking for a date, I'm looking for a *night* to remember. What do you say?", why: ['bio'] }
     ],
-    dry: [
-        { id: 'r1', template: 'You had me at {interest}. I respect a focused profile.', why: ['interest'] },
-        { id: 'r2', template: 'Your "{prompt_hook}" line did better than most opening acts.', why: ['prompt answer'] },
-        { id: 'r3', template: 'This is me pretending to be chill about your {caption_label} photo.', why: ['photo label'] },
-        { id: 'r4', template: 'I can offer one useful topic: the best coffee near {city}.', why: ['city'] },
-        { id: 'r5', template: 'Strong profile. Minimal notes. Maximum curiosity.', why: ['bio'] }
+    intellectual: [
+        { id: 'i1', template: 'I saw {interest} in your profile. What is your most controversial opinion on the subject?', why: ['interest'] },
+        { id: 'i2', template: 'You mentioned "{prompt_hook}". I would love to hear a deep dive on why that matters to you.', why: ['prompt answer'] },
+        { id: 'i3', template: 'Your {caption_label} photo is intriguing. It speaks to a very specific aesthetic.', why: ['photo label'] },
+        { id: 'i4', template: 'If you had to recommend one book for someone visiting {city}, what would it be?', why: ['city'] },
+        { id: 'i5', template: 'I appreciate a profile with substance. Tell me something you learned recently that blew your mind.', why: ['bio'] }
     ]
 };
 
