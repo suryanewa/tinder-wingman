@@ -190,51 +190,76 @@
                 <p class="body-text">Launch Hypothesis & Feedback Loop</p>
                 <svg class="flow-svg" viewBox="0 0 900 500">
                     <path class="flow-path" d="M 250 250 C 250 100, 650 100, 650 250 C 650 400, 250 400, 250 250" />
-
-                    <!-- A/B Test Node -->
-                    <g class="flow-group node-n1">
-                        <circle class="flow-node" cx="250" cy="250" r="80" />
-                        <svg class="node-icon ab-icon" x="200" y="200" width="100" height="100" viewBox="0 0 100 100">
-                            <rect class="bar bar-1" x="15" y="40" width="15" height="40" fill="currentColor" rx="4" />
-                            <rect class="bar bar-2" x="42.5" y="20" width="15" height="60" fill="currentColor" rx="4"
-                                opacity="0.6" />
-                            <rect class="bar bar-3" x="70" y="50" width="15" height="30" fill="currentColor" rx="4" />
-                        </svg>
-                        <text class="flow-text" x="250" y="315">A/B Test</text>
-                    </g>
-
-                    <!-- Retrain Node -->
-                    <g class="flow-group node-n2">
-                        <circle class="flow-node" cx="650" cy="250" r="80" />
-                        <svg class="node-icon retrain-icon" x="600" y="200" width="100" height="100"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                fill="none" />
-                        </svg>
-                        <text class="flow-text" x="650" y="315">Retrain</text>
-                    </g>
+                    <circle class="flow-node flow-n1" cx="250" cy="250" r="80" />
+                    <text class="flow-text" x="250" y="250">A/B Test</text>
+                    <circle class="flow-node flow-n2" cx="650" cy="250" r="80" />
+                    <text class="flow-text" x="650" y="250">Retrain</text>
                 </svg>
             </section>
 
             <!-- Slide 8: Responsible AI -->
             <section data-state="slide-8" class="slide-fullscreen dark-theme">
                 <h2 class="section-title">FAT+P Framework</h2>
-                <div class="interactive-grid">
-                    <div class="grid-box gb-1">
+                <div class="fatp-nexus">
+                    <svg class="nexus-connections" viewBox="0 0 800 500">
+                        <line class="nexus-line nl-1" x1="400" y1="250" x2="200" y2="100" />
+                        <line class="nexus-line nl-2" x1="400" y1="250" x2="600" y2="100" />
+                        <line class="nexus-line nl-3" x1="400" y1="250" x2="600" y2="400" />
+                        <line class="nexus-line nl-4" x1="400" y1="250" x2="200" y2="400" />
+                    </svg>
+
+                    <div class="nexus-center">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                    </div>
+
+                    <div class="nexus-node nn-1">
+                        <div class="node-icon" style="color:var(--accent-blue)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
                         <h3 style="color:var(--accent-blue)">Fairness</h3>
-                        <p>Audit performance gaps.</p>
+                        <p>Audit gaps.</p>
                     </div>
-                    <div class="grid-box gb-2">
+                    <div class="nexus-node nn-2">
+                        <div class="node-icon" style="color:var(--accent-green)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-4" />
+                                <path d="M12 8h.01" />
+                            </svg>
+                        </div>
                         <h3 style="color:var(--accent-green)">Accountability</h3>
-                        <p>Human-in-the-loop.</p>
+                        <p>Human-in-loop.</p>
                     </div>
-                    <div class="grid-box gb-3">
+                    <div class="nexus-node nn-3">
+                        <div class="node-icon" style="color:var(--accent-gold)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                        </div>
                         <h3 style="color:var(--accent-gold)">Transparency</h3>
                         <p>Show "Why?".</p>
                     </div>
-                    <div class="grid-box gb-4">
+                    <div class="nexus-node nn-4">
+                        <div class="node-icon" style="color:var(--accent-purple)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                        </div>
                         <h3 style="color:var(--accent-purple)">Privacy</h3>
                         <p>Minimize data.</p>
                     </div>

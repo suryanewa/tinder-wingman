@@ -505,50 +505,138 @@ p {
     stroke-width: 4;
 }
 
-.node-icon {
-    opacity: 0;
-    color: var(--tinder-pink);
-}
-
-.retrain-icon {
-    transform-origin: center;
-    transform-box: fill-box;
-    display: inline-block;
-}
-
 .flow-text {
     fill: #FFF;
     font-family: var(--font-heading);
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     text-anchor: middle;
     dominant-baseline: middle;
-    opacity: 0;
 }
 
-/* Slide 8: Grid */
-.interactive-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+/* Slide 8: FAT+P Nexus */
+.fatp-nexus {
+    position: relative;
     width: 100%;
     max-width: 800px;
-    margin-top: 50px;
+    height: 500px;
+    margin-top: 30px;
 }
 
-.grid-box {
-    background: rgba(255, 255, 255, 0.03);
+.nexus-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.nexus-line {
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 2;
+    stroke-dasharray: 8 8;
+}
+
+.nexus-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    color: white;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.nexus-center svg {
+    width: 40px;
+    height: 40px;
+}
+
+.nexus-node {
+    position: absolute;
+    width: 200px;
+    background: rgba(20, 20, 20, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    padding: 40px;
+    border-radius: 16px;
+    padding: 20px;
     text-align: center;
-    cursor: pointer;
-    transition: background 0.3s;
     backdrop-filter: blur(10px);
+    z-index: 2;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.grid-box:hover {
-    background: rgba(255, 255, 255, 0.08);
+.nexus-node .node-icon {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 10px;
+}
+
+.nexus-node h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.nexus-node p {
+    font-size: 0.9rem;
+    color: #AAA;
+}
+
+/* Node Positioning */
+.nn-1 {
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 0 20px rgba(45, 187, 255, 0.1);
+}
+
+.nn-2 {
+    top: 10%;
+    right: 10%;
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.1);
+}
+
+.nn-3 {
+    bottom: 10%;
+    right: 10%;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.nn-4 {
+    bottom: 10%;
+    left: 10%;
+    box-shadow: 0 0 20px rgba(186, 104, 200, 0.1);
+}
+
+.nexus-node:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.nn-1:hover {
+    box-shadow: 0 0 40px rgba(45, 187, 255, 0.3);
+    border-color: rgba(45, 187, 255, 0.5);
+}
+
+.nn-2:hover {
+    box-shadow: 0 0 40px rgba(0, 230, 118, 0.3);
+    border-color: rgba(0, 230, 118, 0.5);
+}
+
+.nn-3:hover {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.nn-4:hover {
+    box-shadow: 0 0 40px rgba(186, 104, 200, 0.3);
+    border-color: rgba(186, 104, 200, 0.5);
 }
 
 /* Slide 9: Risk */

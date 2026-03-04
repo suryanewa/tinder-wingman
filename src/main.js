@@ -251,40 +251,43 @@ function triggerSlideAnimation(indexh, direction) {
     } else if (state === 'slide-7') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
-
-        const groups = document.querySelectorAll(`${slideSel} .flow-group`);
-        gsap.fromTo(groups, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, stagger: 0.3, ease: 'back.out(1.5)', delay: 0.6 });
-
-        gsap.fromTo(`${slideSel} .node-icon`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, stagger: 0.3, ease: 'back.out(2)', delay: 1 });
-        gsap.fromTo(`${slideSel} .flow-text`, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.3, delay: 1.3 });
-        gsap.fromTo(`${slideSel} .flow-path`, { opacity: 0 }, { opacity: 1, duration: 1.5, delay: 1.5 });
-
-        // A/B Test Continuous Animation
-        gsap.to(`${slideSel} .ab-icon .bar`, {
-            height: (i) => [60, 40, 50][i],
-            y: (i) => [20, 40, 30][i],
-            duration: 1.5,
-            repeat: -1,
-            yoyo: true,
-            stagger: 0.2,
-            ease: "sine.inOut"
-        });
-
-        // Retrain Continuous Animation
-        gsap.to(`${slideSel} .retrain-icon`, {
-            rotation: 360,
-            duration: 4,
-            repeat: -1,
-            ease: "none",
-            transformOrigin: "50% 50%"
-        });
+        gsap.fromTo(`${slideSel} .flow-node`, { scale: 0 }, { scale: 1, duration: 0.8, stagger: 0.3, ease: 'back.out(1.5)', delay: 0.6 });
+        gsap.fromTo(`${slideSel} .flow-text`, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1.2 });
+        gsap.fromTo(`${slideSel} .flow-path`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.5 });
     } else if (state === 'slide-8') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
-        gsap.fromTo(`${slideSel} .grid-box`, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out', delay: 0.6 });
-        document.querySelectorAll(`${slideSel} .grid-box`).forEach((box) => {
-            box.addEventListener('mouseenter', () => anime({ targets: box, scale: 1.05, duration: 300, easing: 'easeOutExpo' }));
-            box.addEventListener('mouseleave', () => anime({ targets: box, scale: 1, duration: 300, easing: 'easeOutExpo' }));
-        });
+
+        // 1. Core pulses in
+        gsap.fromTo(`${slideSel} .nexus-center`,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)', delay: 0.6 }
+        );
+
+        // 2. Lines shoot out
+        gsap.fromTo(`${slideSel} .nexus-line`,
+            { strokeDasharray: 300, strokeDashoffset: 300 },
+            { strokeDashoffset: 0, duration: 0.8, stagger: 0.1, delay: 1 }
+        );
+
+        // 3. Nodes pop in
+        gsap.fromTo(`${slideSel} .nexus-node`,
+            { scale: 0, opacity: 0 },
+            {
+                scale: 1, opacity: 1, duration: 0.6, stagger: 0.15, ease: 'back.out(1.5)', delay: 1.4,
+                onComplete: () => {
+                    // 4. Continuous floating effect
+                    document.querySelectorAll(`${slideSel} .nexus-node`).forEach((node, i) => {
+                        gsap.to(node, {
+                            y: i % 2 === 0 ? 10 : -10,
+                            duration: 2 + i * 0.2,
+                            repeat: -1,
+                            yoyo: true,
+                            ease: "sine.inOut"
+                        });
+                    });
+                }
+            }
+        );
     } else if (state === 'slide-9') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .alert-svg`, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)', delay: 0.6 });
