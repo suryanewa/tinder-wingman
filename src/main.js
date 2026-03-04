@@ -72,7 +72,21 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .glass-container`, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.3 });
         gsap.fromTo(`${slideSel} .impact-text`, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, delay: 0.6 });
         gsap.fromTo(`${slideSel} .fade-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.3 });
-        gsap.fromTo(`${slideSel} .bubble-path`, { strokeDasharray: 500, strokeDashoffset: 500 }, { strokeDashoffset: 0, stroke: '#FE3C72', fill: '#2A2A2A', duration: 1.5, delay: 0.8 });
+        gsap.fromTo(`${slideSel} .bubble-path`,
+            { strokeDasharray: "60 600", strokeDashoffset: 600, stroke: '#FE3C72' },
+            {
+                strokeDashoffset: 0, duration: 2, ease: 'power2.out', delay: 0.8, onComplete: () => {
+                    // Secondary infinite loop that "minds the gap"
+                    gsap.to(`${slideSel} .bubble-path`, {
+                        strokeDasharray: "150 450",
+                        strokeDashoffset: -600,
+                        duration: 4,
+                        ease: "none",
+                        repeat: -1
+                    });
+                }
+            }
+        );
         gsap.fromTo(`${slideSel} .dot`, { y: 5, opacity: 0 }, { y: -5, opacity: 1, duration: 0.5, stagger: 0.2, yoyo: true, repeat: -1, delay: 1.8 });
     }
     else if (state === 'slide-3') {
