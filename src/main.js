@@ -251,9 +251,33 @@ function triggerSlideAnimation(indexh, direction) {
     } else if (state === 'slide-7') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
-        gsap.fromTo(`${slideSel} .flow-node`, { scale: 0 }, { scale: 1, duration: 0.8, stagger: 0.3, ease: 'back.out(1.5)', delay: 0.6 });
-        gsap.fromTo(`${slideSel} .flow-text`, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1.2 });
-        gsap.fromTo(`${slideSel} .flow-path`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.5 });
+
+        const groups = document.querySelectorAll(`${slideSel} .flow-group`);
+        gsap.fromTo(groups, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, stagger: 0.3, ease: 'back.out(1.5)', delay: 0.6 });
+
+        gsap.fromTo(`${slideSel} .node-icon`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, stagger: 0.3, ease: 'back.out(2)', delay: 1 });
+        gsap.fromTo(`${slideSel} .flow-text`, { opacity: 0 }, { opacity: 1, duration: 0.5, stagger: 0.3, delay: 1.3 });
+        gsap.fromTo(`${slideSel} .flow-path`, { opacity: 0 }, { opacity: 1, duration: 1.5, delay: 1.5 });
+
+        // A/B Test Continuous Animation
+        gsap.to(`${slideSel} .ab-icon .bar`, {
+            height: (i) => [40, 20, 35][i],
+            y: (i) => [10, 30, 15][i],
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            stagger: 0.2,
+            ease: "sine.inOut"
+        });
+
+        // Retrain Continuous Animation
+        gsap.to(`${slideSel} .retrain-icon`, {
+            rotation: 360,
+            duration: 4,
+            repeat: -1,
+            ease: "none",
+            transformOrigin: "center center"
+        });
     } else if (state === 'slide-8') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .grid-box`, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, stagger: 0.1, duration: 0.6, ease: 'power2.out', delay: 0.6 });

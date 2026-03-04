@@ -505,13 +505,23 @@ p {
     stroke-width: 4;
 }
 
+.node-icon {
+    opacity: 0;
+    color: var(--tinder-pink);
+}
+
+.retrain-icon {
+    transform-origin: center;
+}
+
 .flow-text {
     fill: #FFF;
     font-family: var(--font-heading);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     text-anchor: middle;
     dominant-baseline: middle;
+    opacity: 0;
 }
 
 /* Slide 8: Grid */
