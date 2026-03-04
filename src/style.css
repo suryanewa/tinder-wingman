@@ -732,8 +732,8 @@ p {
 .demo-profile-slide,
 .demo-chat-slide {
     align-items: center !important;
-    justify-content: center !important;
-    padding: 100px 64px 80px !important;
+    justify-content: flex-start !important;
+    padding: 120px 64px 80px !important;
     gap: 22px;
 }
 
