@@ -120,8 +120,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 5;
-    /* Sit on top of tiers */
+    z-index: 0;
     pointer-events: none;
     overflow: visible;
 }
@@ -129,7 +128,7 @@ p {
 .h-conn {
     fill: none;
     stroke: #FFFFFF;
-    stroke-width: 6;
+    stroke-width: 4;
     stroke-dasharray: 12 12;
     opacity: 0;
 }
