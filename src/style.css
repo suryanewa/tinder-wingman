@@ -409,15 +409,15 @@ p {
 }
 
 #clock-svg {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     color: var(--accent-green);
     filter: drop-shadow(0 0 30px rgba(0, 230, 118, 0.6));
 }
 
 #hour-hand,
 #minute-hand {
-    transform-origin: 50% 50%;
+    stroke-linecap: round;
 }
 
 .glow-metric {

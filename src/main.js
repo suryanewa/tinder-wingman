@@ -178,8 +178,8 @@ function triggerSlideAnimation(indexh, direction) {
 
         // Clock Animation
         gsap.fromTo(`${slideSel} #clock-svg`, { scale: 0, opacity: 0, rotate: -90 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', delay: 0.8 });
-        gsap.to(`${slideSel} #hour-hand`, { rotation: 360, duration: 12, repeat: -1, ease: "none" });
-        gsap.to(`${slideSel} #minute-hand`, { rotation: 360, duration: 2, repeat: -1, ease: "none" });
+        gsap.to(`${slideSel} #hour-hand`, { rotation: 360, duration: 12, repeat: -1, ease: "none", svgOrigin: "50 50" });
+        gsap.to(`${slideSel} #minute-hand`, { rotation: 360, duration: 2, repeat: -1, ease: "none", svgOrigin: "50 50" });
 
         gsap.fromTo(`${slideSel} .inline-icon`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, stagger: 0.4, ease: 'back.out(2)', delay: 0.6 });
         gsap.fromTo(`${slideSel} .body-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.2 });
