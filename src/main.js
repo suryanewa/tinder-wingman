@@ -548,6 +548,23 @@ function sendCurrentDraft() {
         renderDemoThread();
         renderDraftComposer();
         if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
+
+        // Auto-reply simulation
+        setTimeout(() => {
+            demoChat.state = {
+                ...demoChat.state,
+                messages: [
+                    ...demoChat.state.messages,
+                    {
+                        id: `msg-${demoChat.state.messages.length + 1}`,
+                        author: 'match',
+                        text: "What's your number?"
+                    }
+                ]
+            };
+            renderDemoThread();
+            if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
+        }, 1500);
     } else {
         renderDraftComposer();
     }
