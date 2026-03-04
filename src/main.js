@@ -185,8 +185,8 @@ function triggerSlideAnimation(indexh, direction) {
 
         // North Star - Clock Animation
         gsap.fromTo(`${slideSel} #clock-svg`, { scale: 0, opacity: 0, rotate: -90 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', delay: 1 });
-        gsap.to(`${slideSel} #hour-hand`, { rotation: 360, duration: 12, repeat: -1, ease: "none", svgOrigin: "50 50" });
-        gsap.to(`${slideSel} #minute-hand`, { rotation: 360, duration: 2, repeat: -1, ease: "none", svgOrigin: "50 50" });
+        gsap.fromTo(`${slideSel} #hour-hand`, { rotation: 0 }, { rotation: 360, duration: 12, repeat: -1, ease: "none", svgOrigin: "50 50" });
+        gsap.fromTo(`${slideSel} #minute-hand`, { rotation: 0 }, { rotation: 360, duration: 2, repeat: -1, ease: "none", svgOrigin: "50 50" });
 
         // Guardrails - Shield Animation
         gsap.fromTo(`${slideSel} .shield-main-icon`, { scale: 0, opacity: 0, rotate: 15 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: 'back.out(1.7)', delay: 1.3 });
