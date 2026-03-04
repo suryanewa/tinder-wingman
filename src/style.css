@@ -660,6 +660,12 @@ p {
     filter: drop-shadow(0 0 20px rgba(254, 60, 114, 0.5));
 }
 
+.alert-svg path,
+.alert-svg line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+}
+
 .risk-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
