@@ -261,8 +261,8 @@ function triggerSlideAnimation(indexh, direction) {
 
         // A/B Test Continuous Animation
         gsap.to(`${slideSel} .ab-icon .bar`, {
-            height: (i) => [40, 20, 35][i],
-            y: (i) => [10, 30, 15][i],
+            height: (i) => [60, 40, 55][i],
+            y: (i) => [20, 40, 25][i],
             duration: 1.5,
             repeat: -1,
             yoyo: true,
@@ -276,7 +276,7 @@ function triggerSlideAnimation(indexh, direction) {
             duration: 4,
             repeat: -1,
             ease: "none",
-            transformOrigin: "center center"
+            transformOrigin: "12px 12px"
         });
     } else if (state === 'slide-8') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
