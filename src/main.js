@@ -229,13 +229,21 @@ function triggerSlideAnimation(indexh, direction) {
             { scale: 0, opacity: 0, y: 20 },
             { scale: 1, opacity: 1, y: 0, duration: 0.8, delay: 1, stagger: 0.3, ease: 'back.out(2)' }
         );
-        gsap.to(`${slideSel} .indicator-arrow`, {
+        gsap.to(`${slideSel} .arrow-up`, {
             y: -15,
             duration: 1.5,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut",
             delay: 1.8
+        });
+        gsap.to(`${slideSel} .arrow-down`, {
+            y: 15,
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: 2.1
         });
 
         gsap.fromTo([`${slideSel} .split-left h2`, `${slideSel} .split-right h2`], { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, delay: 0.8, duration: 0.6, stagger: 0.2 });
