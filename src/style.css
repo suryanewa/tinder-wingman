@@ -573,7 +573,6 @@ p {
     backdrop-filter: blur(10px);
     z-index: 2;
     opacity: 0;
-    transform: scale(0);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -619,7 +618,7 @@ p {
 }
 
 .nexus-node:hover {
-    transform: translateY(-5px) scale(1.05);
+    z-index: 3;
 }
 
 .nn-1:hover {

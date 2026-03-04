@@ -258,15 +258,16 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
 
         // 1. Lines shoot out
-        gsap.to(`${slideSel} .nexus-line`,
+        gsap.fromTo(`${slideSel} .nexus-line`,
+            { strokeDashoffset: 400 },
             { strokeDashoffset: 0, duration: 1, stagger: 0.15, delay: 0.5, ease: 'power2.out' }
         );
 
         // 2. Nodes pop in
-        gsap.to(`${slideSel} .nexus-node`,
+        gsap.fromTo(`${slideSel} .nexus-node`,
+            { scale: 0, opacity: 0 },
             {
                 scale: 1, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)', delay: 1,
-                clearProps: "transform", // Clear the scale so the hover and float transforms work properly
                 onComplete: () => {
                     // 3. Continuous floating effect
                     document.querySelectorAll(`${slideSel} .nexus-node`).forEach((node, i) => {
