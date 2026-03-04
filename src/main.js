@@ -120,8 +120,19 @@ function triggerSlideAnimation(indexh, direction) {
         const conns = document.querySelectorAll(`${slideSel} .h-conn`);
         if (conns.length > 0) {
             gsap.fromTo(conns,
-                { opacity: 0, strokeDashoffset: 50 },
-                { opacity: 1, strokeDashoffset: 0, duration: 1, stagger: 0.2, delay: 1.5, ease: 'power2.out' }
+                { opacity: 0, strokeDashoffset: 24 },
+                {
+                    opacity: 1, strokeDashoffset: 0, duration: 1, stagger: 0.2, delay: 1.5, ease: 'power2.out',
+                    onComplete: () => {
+                        // Infinite flowing animation
+                        gsap.to(conns, {
+                            strokeDashoffset: -24,
+                            duration: 1.5,
+                            ease: "none",
+                            repeat: -1
+                        });
+                    }
+                }
             );
         }
     }

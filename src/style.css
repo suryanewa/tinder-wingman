@@ -127,20 +127,9 @@ p {
 
 .h-conn {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.2);
-    stroke-width: 2;
-    stroke-dasharray: 8 8;
-    animation: flowLine 2s linear infinite;
-}
-
-@keyframes flowLine {
-    from {
-        stroke-dashoffset: 16;
-    }
-
-    to {
-        stroke-dashoffset: 0;
-    }
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 4;
+    stroke-dasharray: 12 12;
 }
 
 .impact-text {
