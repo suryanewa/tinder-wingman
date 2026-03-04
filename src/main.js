@@ -477,7 +477,8 @@ function setupDemoChat() {
     demoElements.draftInput = document.getElementById('demo-draft-input');
     demoElements.sendButton = document.getElementById('demo-send-btn');
     demoElements.regenerateButton = document.getElementById('demo-regenerate-btn');
-    demoElements.toneLabel = document.getElementById('demo-tone-label');
+    demoElements.toneButtons = document.querySelectorAll('.demo-tone-btn');
+    demoElements.toneValueLabel = document.getElementById('demo-input-tone');
 
     if (!demoElements.thread || !demoElements.suggestions || !demoElements.draftInput || !demoElements.sendButton || !demoElements.regenerateButton) return;
 
@@ -505,6 +506,27 @@ function setupDemoChat() {
     });
 
     demoElements.sendButton.addEventListener('click', sendCurrentDraft);
+
+    if (demoElements.toneButtons) {
+        demoElements.toneButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                demoChat.tone = btn.dataset.tone;
+                demoChat.seedOffset = 0;
+                demoChat.state = {
+                    ...demoChat.state,
+                    selectedSuggestionId: null
+                };
+
+                if (demoElements.toneValueLabel) {
+                    demoElements.toneValueLabel.textContent = demoChat.tone;
+                }
+
+                demoChat.suggestions = getDeterministicSuggestions(demoProfile, demoChat.tone, demoSeed + demoChat.seedOffset, 3);
+                renderDemoSuggestions();
+                renderDraftComposer();
+            });
+        });
+    }
 
     demoElements.regenerateButton.addEventListener('click', () => {
         demoChat.seedOffset += 1;
@@ -581,5 +603,14 @@ function renderDraftComposer() {
     if (!demoElements.draftInput || !demoElements.sendButton) return;
     demoElements.draftInput.value = demoChat.state.draft;
     demoElements.sendButton.disabled = demoChat.state.draft.trim().length === 0;
-    if (demoElements.toneLabel) demoElements.toneLabel.textContent = demoChat.tone;
+
+    if (demoElements.toneButtons) {
+        demoElements.toneButtons.forEach((btn) => {
+            if (btn.dataset.tone === demoChat.tone) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
 }

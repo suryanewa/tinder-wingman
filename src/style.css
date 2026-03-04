@@ -1016,14 +1016,39 @@ p {
     color: #fff;
 }
 
-.demo-tone-pill {
+.demo-tone-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
     font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.78);
 }
 
-.demo-tone-pill span {
+.demo-tone-label-text {
+    margin-right: 4px;
+}
+
+.demo-tone-btn {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.78);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.demo-tone-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.demo-tone-btn.active {
+    background: #FE3C72;
     color: #fff;
-    font-weight: 700;
+    border-color: #FE3C72;
 }
 
 .demo-suggestion-list {
