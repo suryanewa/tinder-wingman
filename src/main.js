@@ -73,22 +73,11 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .impact-text`, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, delay: 0.6 });
         gsap.fromTo(`${slideSel} .fade-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.3 });
         const bubblePath = document.querySelector(`${slideSel} .bubble-path`);
-        const pathLength = 600; // Safe overestimate for this path
+        const pathLength = bubblePath.getTotalLength();
 
         gsap.fromTo(bubblePath,
             { strokeDasharray: pathLength, strokeDashoffset: pathLength, stroke: '#FE3C72', fill: '#2A2A2A', opacity: 0 },
-            {
-                strokeDashoffset: 0, opacity: 1, duration: 1.5, ease: 'power2.out', delay: 0.8, onComplete: () => {
-                    // Once drawn, transition to a looping dash pattern
-                    gsap.set(bubblePath, { strokeDasharray: "100 200" });
-                    gsap.to(bubblePath, {
-                        strokeDashoffset: -300,
-                        duration: 3,
-                        ease: "none",
-                        repeat: -1
-                    });
-                }
-            }
+            { strokeDashoffset: 0, opacity: 1, duration: 2, ease: 'power2.inOut', delay: 0.8 }
         );
         gsap.fromTo(`${slideSel} .dot`, { y: 5, opacity: 0 }, { y: -5, opacity: 1, duration: 0.5, stagger: 0.2, yoyo: true, repeat: -1, delay: 1.8 });
     }
