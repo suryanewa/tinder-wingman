@@ -469,7 +469,7 @@ function triggerMatchScreen() {
 
 function syncFixedUi(indexh) {
     const actionRow = document.getElementById('action-row');
-    if (actionRow) actionRow.classList.toggle('hidden', indexh !== 0);
+    if (actionRow) actionRow.classList.remove('hidden');
 
     const matchScreen = document.getElementById('match-screen');
     if (matchScreen && indexh !== 0 && matchScreen.classList.contains('active')) {
