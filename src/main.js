@@ -223,6 +223,21 @@ function triggerSlideAnimation(indexh, direction) {
     } else if (state === 'slide-6') {
         gsap.fromTo(`${slideSel} .split-left`, { x: '-100%' }, { x: '0%', duration: 0.8, ease: 'power3.out', delay: 0.2 });
         gsap.fromTo(`${slideSel} .split-right`, { x: '100%' }, { x: '0%', duration: 0.8, ease: 'power3.out', delay: 0.2 });
+
+        // Indicator Arrows
+        gsap.fromTo(`${slideSel} .indicator-arrow`,
+            { scale: 0, opacity: 0, y: 20 },
+            { scale: 1, opacity: 1, y: 0, duration: 0.8, delay: 1, stagger: 0.3, ease: 'back.out(2)' }
+        );
+        gsap.to(`${slideSel} .indicator-arrow`, {
+            y: -15,
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: 1.8
+        });
+
         gsap.fromTo([`${slideSel} .split-left h2`, `${slideSel} .split-right h2`], { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, delay: 0.8, duration: 0.6, stagger: 0.2 });
         gsap.fromTo([`${slideSel} .split-left p`, `${slideSel} .split-right p`], { opacity: 0, y: 20 }, { opacity: 1, y: 0, delay: 1.2, duration: 0.6, stagger: 0.1 });
     } else if (state === 'slide-7') {

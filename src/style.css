@@ -471,6 +471,12 @@ p {
     opacity: 0.8;
 }
 
+.indicator-arrow {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+}
+
 /* Slide 7: Flow */
 .flow-svg {
     width: 600px;
