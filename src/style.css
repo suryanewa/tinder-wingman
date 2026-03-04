@@ -75,9 +75,12 @@ p {
     font-size: 6rem;
     background: var(--tinder-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-    text-shadow: 0 4px 20px rgba(254, 60, 114, 0.3);
+    margin-bottom: 30px;
+    text-shadow: 0 10px 30px rgba(254, 60, 114, 0.4);
+    line-height: 1.1;
+    padding: 20px 0;
 }
 
 .hero-subtitle {
