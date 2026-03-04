@@ -24,19 +24,21 @@ deck.initialize().then(() => {
     setupAnimations();
     setupDrag();
 
-    // Trigger slide 1 animation manually since it's the start
+    // Trigger current slide animation on start
     setTimeout(() => {
-        triggerSlideAnimation(0, 'next');
+        triggerSlideAnimation(deck.getState().indexh, 'next');
     }, 100);
 });
 
 function setupCustomProgressBar() {
     const progressBar = document.getElementById('progress-bar');
-    deck.on('slidechanged', () => {
+    const update = () => {
         const total = deck.getTotalSlides();
         const current = deck.getSlidePastCount() + 1;
         progressBar.style.width = `${(current / total) * 100}%`;
-    });
+    };
+    update();
+    deck.on('slidechanged', update);
 }
 
 function triggerSlideAnimation(indexh, direction) {
@@ -64,7 +66,8 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo('.hero-content p', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 1.1 });
 
         setTimeout(() => {
-            document.getElementById('action-row').classList.remove('hidden');
+            const actionRow = document.getElementById('action-row');
+            if (actionRow) actionRow.classList.remove('hidden');
             gsap.fromTo('.action-btn', { scale: 0, y: 30 }, { scale: 1, y: 0, stagger: 0.1, duration: 0.6, ease: 'back.out(2)' });
         }, 1500);
     }
@@ -72,12 +75,12 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .glass-container`, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.3 });
         gsap.fromTo(`${slideSel} .impact-text`, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, delay: 0.6 });
         gsap.fromTo(`${slideSel} .fade-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.3 });
+
         const bubblePath = document.querySelector(`${slideSel} .bubble-path`);
         if (bubblePath) {
-            gsap.fromTo(bubblePath,
-                { strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 1 },
-                { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut', delay: 0.8 }
-            );
+            const len = bubblePath.getTotalLength();
+            gsap.set(bubblePath, { strokeDasharray: len, strokeDashoffset: len });
+            gsap.to(bubblePath, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut', delay: 0.8 });
         }
         gsap.fromTo(`${slideSel} .dot`, { y: 5, opacity: 0 }, { y: -5, opacity: 1, duration: 0.5, stagger: 0.2, yoyo: true, repeat: -1, delay: 1.8 });
     }
