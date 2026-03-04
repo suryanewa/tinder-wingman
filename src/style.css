@@ -141,7 +141,7 @@ p {
 }
 
 .fade-text {
-    color: #555;
+    color: var(--tinder-coral);
 }
 
 .section-title {
