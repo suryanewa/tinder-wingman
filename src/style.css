@@ -1220,7 +1220,7 @@ p {
 }
 
 .demo-inputs-card--wide {
-    min-height: 520px;
+    min-height: 400px;
 }
 
 .demo-inputs-card>* {
