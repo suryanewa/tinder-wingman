@@ -512,6 +512,8 @@ p {
 
 .retrain-icon {
     transform-origin: center;
+    transform-box: fill-box;
+    display: inline-block;
 }
 
 .flow-text {
