@@ -455,10 +455,6 @@ p {
     line-height: 1;
 }
 
-.north-star .section-title {
-    color: var(--accent-green);
-}
-
 .north-star .glow-metric {
     color: var(--accent-green);
     text-shadow: 0 0 60px rgba(0, 230, 118, 0.5);
