@@ -58,8 +58,8 @@ function triggerSlideAnimation(indexh, direction) {
 
     // Custom internal animations per slide
     if (state === 'slide-1') {
-        gsap.fromTo('.hero-flame .flame-path', { strokeDasharray: 200, strokeDashoffset: 200 }, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', delay: 0.3 });
-        gsap.to('.hero-flame .flame-fill', { opacity: 1, duration: 1, delay: 1.8 });
+        gsap.fromTo('.hero-flame .flame-path', { strokeDasharray: 1000, strokeDashoffset: 1000 }, { strokeDashoffset: 0, duration: 2.5, ease: 'power2.inOut', delay: 0.3 });
+        gsap.to('.hero-flame .flame-fill', { opacity: 1, duration: 1, delay: 2.5 });
         gsap.fromTo('.hero-content h1', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.8, ease: 'back.out(1.5)' });
         gsap.fromTo('.hero-content p', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 1.1 });
 
