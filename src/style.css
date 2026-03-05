@@ -733,7 +733,7 @@ p {
 .reveal section.demo-chat-slide {
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 180px 64px 80px !important;
+    padding: 140px 64px 60px !important;
     gap: 22px;
 }
 
@@ -751,7 +751,7 @@ p {
     max-width: 1220px;
     display: grid;
     gap: 24px;
-    margin: 20px auto 0;
+    margin: 0 auto;
     zoom: 0.72;
 }
 
