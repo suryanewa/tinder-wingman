@@ -422,9 +422,18 @@ function setupAnimations() {
         btn.addEventListener('mouseleave', () => anime({ targets: btn, scale: 1, duration: 300, easing: 'easeOutElastic(1, .8)' }));
     });
 
-    document.querySelector('.btn-nope')?.addEventListener('click', () => swipeOut('-100vw', -15, () => deck.prev()));
-    document.querySelector('.btn-like')?.addEventListener('click', () => swipeOut('100vw', 15, () => deck.next()));
-    document.querySelector('.btn-superlike')?.addEventListener('click', triggerMatchScreen);
+    document.querySelector('.btn-nope')?.addEventListener('click', () => {
+        animateActionButton('.btn-nope');
+        swipeOut('-100vw', -15, () => deck.prev());
+    });
+    document.querySelector('.btn-like')?.addEventListener('click', () => {
+        animateActionButton('.btn-like');
+        swipeOut('100vw', 15, () => deck.next());
+    });
+    document.querySelector('.btn-superlike')?.addEventListener('click', () => {
+        animateActionButton('.btn-superlike');
+        triggerMatchScreen();
+    });
 }
 
 function setupDrag() {
@@ -447,20 +456,56 @@ function setupDrag() {
         if (slide) gsap.set(slide, { x: currentX, rotation: currentX * 0.02 });
     });
 
-    document.addEventListener('pointerup', endDrag);
-    document.addEventListener('pointercancel', endDrag);
-
     function endDrag() {
         if (!isDragging) return;
         isDragging = false;
         const slide = deck.getCurrentSlide();
         if (!slide) return;
 
-        if (currentX > 150) swipeOut('100vw', 15, () => deck.next());
-        else if (currentX < -150) swipeOut('-100vw', -15, () => deck.prev());
+        if (currentX > 150) {
+            animateActionButton('.btn-like');
+            swipeOut('100vw', 15, () => deck.next());
+        }
+        else if (currentX < -150) {
+            animateActionButton('.btn-nope');
+            swipeOut('-100vw', -15, () => deck.prev());
+        }
         else if (Math.abs(currentX) > 0) gsap.to(slide, { x: 0, rotation: 0, duration: 0.5, ease: 'elastic.out(1, 0.7)' });
         currentX = 0;
     }
+
+    document.addEventListener('pointerup', endDrag);
+    document.addEventListener('pointercancel', endDrag);
+}
+
+function animateActionButton(selector) {
+    const btn = document.querySelector(`.action-row ${selector}`);
+    if (!btn) return;
+
+    gsap.killTweensOf(btn);
+    gsap.fromTo(btn,
+        { scale: 1 },
+        {
+            scale: 1.5,
+            duration: 0.25,
+            ease: "back.out(3)",
+            yoyo: true,
+            repeat: 1,
+            clearProps: "scale"
+        }
+    );
+
+    // Add a quick flash effect
+    gsap.fromTo(btn,
+        { filter: "brightness(1) contrast(1)" },
+        {
+            filter: "brightness(1.5) contrast(1.2)",
+            duration: 0.15,
+            yoyo: true,
+            repeat: 1,
+            clearProps: "filter"
+        }
+    );
 }
 
 function swipeOut(xOffset, rotation, callback) {
