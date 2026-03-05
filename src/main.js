@@ -275,35 +275,47 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo([`${slideSel} .split-left h2`, `${slideSel} .split-right h2`], { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, delay: 0.8, duration: 0.6, stagger: 0.2 });
         gsap.fromTo([`${slideSel} .split-left p`, `${slideSel} .split-right p`], { opacity: 0, y: 20 }, { opacity: 1, y: 0, delay: 1.2, duration: 0.6, stagger: 0.1 });
     } else if (state === 'slide-8') {
-        gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
-        gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
-        gsap.fromTo(`${slideSel} .flow-node`, { scale: 0 }, { scale: 1, duration: 0.8, stagger: 0.3, ease: 'back.out(1.5)', delay: 0.6 });
-        gsap.fromTo(`${slideSel} .flow-text`, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1.2 });
-        gsap.fromTo(`${slideSel} .flow-path`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.5 });
-    } else if (state === 'slide-9') {
-        gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
+        gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2 });
 
-        // 1. Lines shoot out
+        // 1. Lines shoot out from center junction
         gsap.fromTo(`${slideSel} .nexus-line`,
-            { strokeDashoffset: 400 },
-            { strokeDashoffset: 0, duration: 1, stagger: 0.15, delay: 0.5, ease: 'power2.out' }
+            { strokeDashoffset: 400, opacity: 0 },
+            { strokeDashoffset: 0, opacity: 1, duration: 0.8, stagger: 0.15, delay: 0.4, ease: 'power2.out' }
         );
 
-        // 2. Nodes pop in
+        // 2. Nodes pop out from center following the line trajectory
         gsap.fromTo(`${slideSel} .nexus-node`,
-            { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.8, stagger: 0.2, ease: 'back.out(1.5)', delay: 1 }
+            {
+                scale: 0,
+                opacity: 0,
+                x: (i) => (i === 0 || i === 3) ? 150 : -150,
+                y: (i) => (i < 2) ? 100 : -100, // Resets previous floating offsets
+                rotation: (i) => i % 2 === 0 ? -10 : 10
+            },
+            {
+                scale: 1,
+                opacity: 1,
+                x: 0,
+                y: 0,
+                rotation: 0,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: 'expo.out',
+                delay: 0.6
+            }
         );
 
-        // 3. Continuous floating effect
+        // 3. Continuous floating effect with refined movement
         gsap.to(`${slideSel} .nexus-node`, {
-            y: (i) => i % 2 === 0 ? 10 : -10,
-            duration: (i) => 2 + i * 0.2,
+            y: (i) => i % 2 === 0 ? 12 : -12,
+            duration: (i) => 2.5 + i * 0.3,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut",
-            delay: 2.5
+            delay: 2.2
         });
+    } else if (state === 'slide-9') {
+        gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
     } else if (state === 'slide-10') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
 
