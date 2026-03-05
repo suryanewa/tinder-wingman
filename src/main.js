@@ -276,6 +276,9 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo([`${slideSel} .split-left p`, `${slideSel} .split-right p`], { opacity: 0, y: 20 }, { opacity: 1, y: 0, delay: 1.2, duration: 0.6, stagger: 0.1 });
     } else if (state === 'slide-8') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2 });
+        gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.4 });
+    } else if (state === 'slide-9') {
+        gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2 });
 
         // 1. Lines shoot out from center junction
         gsap.fromTo(`${slideSel} .nexus-line`,
@@ -289,7 +292,7 @@ function triggerSlideAnimation(indexh, direction) {
                 scale: 0,
                 opacity: 0,
                 x: (i) => (i === 0 || i === 3) ? 150 : -150,
-                y: (i) => (i < 2) ? 100 : -100, // Resets previous floating offsets
+                y: (i) => (i < 2) ? 100 : -100,
                 rotation: (i) => i % 2 === 0 ? -10 : 10
             },
             {
@@ -314,8 +317,6 @@ function triggerSlideAnimation(indexh, direction) {
             ease: "sine.inOut",
             delay: 2.2
         });
-    } else if (state === 'slide-9') {
-        gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
     } else if (state === 'slide-10') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
 
