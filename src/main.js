@@ -332,7 +332,7 @@ function triggerSlideAnimation(indexh, direction) {
 
         // Threat/Blocked Node Pulsing
         gsap.to(`${slideSel} .demo-telemetry-node.blocked`,
-            { scale: 1.1, filter: 'brightness(1.8) drop-shadow(0 0 20px rgba(255, 51, 51, 0.8))', duration: 0.3, yoyo: true, repeat: 3, delay: 2.2 }
+            { filter: 'brightness(1.8) drop-shadow(0 0 20px rgba(255, 51, 51, 0.8))', duration: 0.3, yoyo: true, repeat: 3, delay: 2.2 }
         );
 
         // Continuous Scanning Sweeper
