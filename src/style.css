@@ -729,11 +729,11 @@ p {
 }
 
 /* Slide 11 + 12: Product Demo */
-.demo-profile-slide,
-.demo-chat-slide {
+.reveal section.demo-profile-slide,
+.reveal section.demo-chat-slide {
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 120px 64px 80px !important;
+    padding: 180px 64px 80px !important;
     gap: 22px;
 }
 
@@ -751,8 +751,8 @@ p {
     max-width: 1220px;
     display: grid;
     gap: 24px;
-    margin: 10px auto 0;
-    zoom: 0.78;
+    margin: 20px auto 0;
+    zoom: 0.72;
 }
 
 .demo-profile-layout {
