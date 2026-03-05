@@ -710,6 +710,13 @@ function setupDemoChat() {
     demoElements.suggestions.addEventListener('click', (event) => {
         const button = event.target.closest('button[data-suggestion-id]');
         if (!button) return;
+
+        if (demoChat.tone === 'raunchy') {
+            const modal = document.getElementById('paywall-modal');
+            if (modal) modal.classList.remove('hidden');
+            return;
+        }
+
         const suggestion = demoChat.suggestions.find((entry) => entry.id === button.dataset.suggestionId);
         if (!suggestion) return;
 
@@ -761,6 +768,17 @@ function setupDemoChat() {
             renderDraftComposer();
         });
     }
+
+    const paywallModal = document.getElementById('paywall-modal');
+    document.getElementById('paywall-close-btn')?.addEventListener('click', () => {
+        if (paywallModal) paywallModal.classList.add('hidden');
+    });
+    document.getElementById('paywall-cancel-btn')?.addEventListener('click', () => {
+        if (paywallModal) paywallModal.classList.add('hidden');
+    });
+    paywallModal?.addEventListener('click', (event) => {
+        if (event.target === paywallModal) paywallModal.classList.add('hidden');
+    });
 }
 
 function sendCurrentDraft() {
@@ -772,11 +790,11 @@ function sendCurrentDraft() {
         renderDraftComposer();
         if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
 
-    // Auto-reply simulation
-    setTimeout(() => {
-        demoChat.state = {
-            ...demoChat.state,
-            messages: [
+        // Auto-reply simulation
+        setTimeout(() => {
+            demoChat.state = {
+                ...demoChat.state,
+                messages: [
                     ...demoChat.state.messages,
                     {
                         id: `msg-${demoChat.state.messages.length + 1}`,
@@ -784,10 +802,10 @@ function sendCurrentDraft() {
                         text: "What's your number?"
                     }
                 ]
-        };
-        renderDemoThread();
-        if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
-    }, 1500);
+            };
+            renderDemoThread();
+            if (demoElements.thread) demoElements.thread.scrollTop = demoElements.thread.scrollHeight;
+        }, 1500);
     } else {
         renderDraftComposer();
     }
@@ -827,9 +845,18 @@ function renderDemoSuggestions() {
 
         const text = document.createElement('span');
         text.className = 'demo-suggestion-text';
+        if (demoChat.tone === 'raunchy') text.classList.add('paywall-blurred');
         text.textContent = suggestion.text;
 
         button.appendChild(text);
+
+        if (demoChat.tone === 'raunchy') {
+            const lockIcon = document.createElement('div');
+            lockIcon.className = 'paywall-lock-overlay';
+            lockIcon.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`;
+            button.appendChild(lockIcon);
+        }
+
         demoElements.suggestions.appendChild(button);
     });
 }

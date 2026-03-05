@@ -445,7 +445,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="tinder-swipe-hint">Swipe on profile to move across screens</p>
+
                     </article>
 
                     <!-- Connection Indicator -->
@@ -546,8 +546,8 @@
                                 <div class="demo-tone-selector">
                                     <span class="demo-tone-label-text">Tone:</span>
                                     <button class="demo-tone-btn" data-tone="playful">Playful</button>
-                                    <button class="demo-tone-btn" data-tone="raunchy">Raunchy</button>
                                     <button class="demo-tone-btn" data-tone="intellectual">Intellectual</button>
+                                    <button class="demo-tone-btn" data-tone="raunchy">Raunchy</button>
                                 </div>
                                 <div id="demo-suggestions" class="demo-inline-suggestions"></div>
                             </div>
@@ -555,6 +555,21 @@
                                 <textarea id="demo-draft-input" rows="2"
                                     placeholder="Pick one, edit, and send."></textarea>
                                 <button id="demo-send-btn" class="demo-send-btn" type="button">Send</button>
+                            </div>
+
+                            <!-- Paywall Modal (In-Phone) -->
+                            <div id="paywall-modal" class="paywall-modal hidden">
+                                <div class="paywall-content">
+                                    <svg class="paywall-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <h2>Unlock Premium</h2>
+                                    <p>Subscribe to unlock Raunchy lines and more.</p>
+                                    <button id="paywall-close-btn" class="paywall-close-btn">Unlock Now</button>
+                                    <button id="paywall-cancel-btn" class="paywall-cancel-btn">Maybe Later</button>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -596,6 +611,8 @@
         <p class="match-subtext">You and Wingman are going to make a great team.</p>
         <button class="match-btn">Send a Message</button>
     </div>
+
+
 
     <script type="module" src="/src/main.js"></script>
 </body>
