@@ -118,6 +118,19 @@ function triggerSlideAnimation(indexh, direction) {
             gsap.fromTo('.action-btn', { scale: 0, y: 30 }, { scale: 1, y: 0, stagger: 0.1, duration: 0.6, ease: 'back.out(2)' });
         }, 1500);
     } else if (state === 'slide-2') {
+        gsap.fromTo(`${slideSel} .reflection-phone-shell`,
+            { y: 90, scale: 0.88, opacity: 0, rotationX: 18, transformPerspective: 1200 },
+            { y: 0, scale: 1, opacity: 1, rotationX: 0, duration: 1.1, ease: 'power3.out', delay: 0.2 }
+        );
+        gsap.fromTo(`${slideSel} .reflection-phone-screen`,
+            { opacity: 0.35 },
+            { opacity: 1, duration: 0.8, ease: 'power2.out', delay: 0.5 }
+        );
+        gsap.fromTo(`${slideSel} .reflection-phone-sheen`,
+            { xPercent: -85, opacity: 0 },
+            { xPercent: 85, opacity: 0.72, duration: 2.2, ease: 'sine.inOut', delay: 0.8, repeat: -1, repeatDelay: 0.6 }
+        );
+    } else if (state === 'slide-3') {
         gsap.fromTo(`${slideSel} .glass-container`, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.3 });
         gsap.fromTo(`${slideSel} .impact-text`, { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, delay: 0.6 });
         gsap.fromTo(`${slideSel} .fade-text`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.3 });
@@ -130,7 +143,7 @@ function triggerSlideAnimation(indexh, direction) {
         }
 
         gsap.fromTo(`${slideSel} .dot`, { y: 5, opacity: 0 }, { y: -5, opacity: 1, duration: 0.5, stagger: 0.2, yoyo: true, repeat: -1, delay: 1.8 });
-    } else if (state === 'slide-3') {
+    } else if (state === 'slide-4') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
 
@@ -154,7 +167,7 @@ function triggerSlideAnimation(indexh, direction) {
         );
         gsap.fromTo(`${slideSel} .orb-icon svg`, { scale: 0, rotate: -45, opacity: 0 }, { scale: 1, rotate: 0, opacity: 1, duration: 0.6, stagger: 0.2, ease: 'back.out(2)', delay: 1 });
         gsap.fromTo(`${slideSel} .conn-line`, { strokeDasharray: 500, strokeDashoffset: 500 }, { strokeDashoffset: 0, duration: 1, stagger: 0.3, delay: 1 });
-    } else if (state === 'slide-4') {
+    } else if (state === 'slide-5') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
 
@@ -214,7 +227,7 @@ function triggerSlideAnimation(indexh, direction) {
                 }
             );
         }
-    } else if (state === 'slide-5') {
+    } else if (state === 'slide-6') {
         gsap.fromTo(`${slideSel} .metric-col`,
             { y: 50, opacity: 0 },
             { y: 0, opacity: 1, duration: 0.8, stagger: 0.3, ease: 'power2.out', delay: 0.2 }
@@ -233,7 +246,7 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.to(`${slideSel} .shield-main-icon`, { y: -5, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 2.3 });
 
         gsap.fromTo(`${slideSel} .body-text`, { opacity: 0, y: 10 }, { opacity: 0.8, y: 0, duration: 1, delay: 1.6, stagger: 0.3 });
-    } else if (state === 'slide-6') {
+    } else if (state === 'slide-7') {
         gsap.fromTo(`${slideSel} .split-left`, { x: '-100%' }, { x: '0%', duration: 0.8, ease: 'power3.out', delay: 0.2 });
         gsap.fromTo(`${slideSel} .split-right`, { x: '100%' }, { x: '0%', duration: 0.8, ease: 'power3.out', delay: 0.2 });
 
@@ -261,13 +274,13 @@ function triggerSlideAnimation(indexh, direction) {
 
         gsap.fromTo([`${slideSel} .split-left h2`, `${slideSel} .split-right h2`], { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, delay: 0.8, duration: 0.6, stagger: 0.2 });
         gsap.fromTo([`${slideSel} .split-left p`, `${slideSel} .split-right p`], { opacity: 0, y: 20 }, { opacity: 1, y: 0, delay: 1.2, duration: 0.6, stagger: 0.1 });
-    } else if (state === 'slide-7') {
+    } else if (state === 'slide-8') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
         gsap.fromTo(`${slideSel} .flow-node`, { scale: 0 }, { scale: 1, duration: 0.8, stagger: 0.3, ease: 'back.out(1.5)', delay: 0.6 });
         gsap.fromTo(`${slideSel} .flow-text`, { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 1.2 });
         gsap.fromTo(`${slideSel} .flow-path`, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1.5 });
-    } else if (state === 'slide-8') {
+    } else if (state === 'slide-9') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
 
         // 1. Lines shoot out
@@ -291,7 +304,7 @@ function triggerSlideAnimation(indexh, direction) {
             ease: "sine.inOut",
             delay: 2.5
         });
-    } else if (state === 'slide-9') {
+    } else if (state === 'slide-10') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
 
         gsap.fromTo(`${slideSel} .alert-svg`, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(2)', delay: 0.6 });
@@ -300,12 +313,12 @@ function triggerSlideAnimation(indexh, direction) {
         gsap.fromTo(`${slideSel} .risk-layout .glass-container`, { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.8 });
         gsap.to(`${slideSel} .heartbeat-bg`, { scale: 1.1, opacity: 0.8, duration: 0.8, yoyo: true, repeat: -1, ease: 'power1.inOut', delay: 1 });
         gsap.fromTo(`${slideSel} .risk-card`, { x: 30, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.2, duration: 0.6, delay: 1 });
-    } else if (state === 'slide-10') {
+    } else if (state === 'slide-11') {
         gsap.fromTo(`${slideSel} .section-title`, { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.3 });
         gsap.fromTo(`${slideSel} .body-text`, { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.5 });
         gsap.fromTo(`${slideSel} .gold-card`, { y: 100, opacity: 0, rotationY: -30 }, { y: 0, opacity: 1, rotationY: 0, duration: 1, ease: 'power3.out', delay: 0.8 });
         gsap.to(`${slideSel} .glare`, { x: '400%', duration: 1.5, delay: 2, ease: 'power1.inOut', repeat: -1, repeatDelay: 3 });
-    } else if (state === 'slide-11') {
+    } else if (state === 'slide-12') {
         // High-Budget 3D Presentation Entry
         gsap.fromTo(`${slideSel} .tinder-device`,
             { y: 800, z: -400, rotationY: -45, rotationX: 20, rotationZ: -10, opacity: 0, transformPerspective: 1200 },
@@ -349,7 +362,7 @@ function triggerSlideAnimation(indexh, direction) {
             { y: 0, opacity: 1, letterSpacing: '0', duration: 1, ease: 'power3.out', delay: 1.8 }
         );
 
-    } else if (state === 'slide-12') {
+    } else if (state === 'slide-13') {
         const device = document.querySelector(`${slideSel} .demo-chat-device`);
         if (device) {
             gsap.fromTo(device,
@@ -387,8 +400,8 @@ function setupAnimations() {
         }
 
         syncFixedUi(event.indexh);
-        if (event.indexh === 10) resetDemoProfileCarousel();
-        if (event.indexh === 11) resetDemoChat();
+        if (event.indexh === 11) resetDemoProfileCarousel();
+        if (event.indexh === 12) resetDemoChat();
         triggerSlideAnimation(event.indexh, isNext ? 'next' : 'prev');
     });
 
@@ -689,7 +702,7 @@ function goToDemoProfileScreen(targetIndex, animate = true) {
         trackArtist.textContent = hasTrack ? screen.trackArtist || '' : '';
     }
 
-    const slide11 = document.querySelector('section[data-state="slide-11"]');
+    const slide11 = document.querySelector('section[data-state="slide-12"]');
     slide11?.querySelectorAll('[data-profile-screen]').forEach((segment) => {
         segment.classList.toggle('active', Number(segment.dataset.profileScreen) === normalized);
     });

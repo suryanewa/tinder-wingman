@@ -122,6 +122,70 @@ p {
     margin-top: 10px;
 }
 
+/* Slide 2: Reflection */
+.reveal section.reflection-slide {
+    background: #000 !important;
+}
+
+.reflection-phone-shell {
+    width: min(54vw, 360px);
+    aspect-ratio: 9 / 19.5;
+    border-radius: 46px;
+    border: 10px solid #121212;
+    background: #030303;
+    box-shadow: 0 0 0 1px #242424, 0 40px 90px rgba(0, 0, 0, 0.92);
+    position: relative;
+    padding: 22px 10px 16px;
+}
+
+.reflection-phone-notch {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 24px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    background: #111;
+    z-index: 4;
+}
+
+.reflection-phone-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 34px;
+    background: radial-gradient(circle at 50% 30%, #151515 0%, #090909 50%, #010101 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.reflection-phone-sheen {
+    position: absolute;
+    inset: -25% -65%;
+    background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.22) 48%, transparent 64%);
+    opacity: 0;
+}
+
+.reflection-phone-edge-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07), inset 0 -40px 80px rgba(255, 255, 255, 0.02);
+}
+
+.reflection-phone-shell::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    width: 32%;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.26);
+}
+
 .hierarchy-connectors {
     position: absolute;
     top: 0;
@@ -900,6 +964,7 @@ p {
     background: transparent;
     color: transparent;
     z-index: 4;
+    pointer-events: none;
 }
 
 .tinder-photo-nav.prev {
@@ -1691,6 +1756,13 @@ p {
 }
 
 @media (max-width: 768px) {
+
+    .reflection-phone-shell {
+        width: min(74vw, 320px);
+        border-width: 8px;
+        border-radius: 38px;
+        padding: 20px 8px 14px;
+    }
 
     .demo-profile-slide,
     .demo-chat-slide {
