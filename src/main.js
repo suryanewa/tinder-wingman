@@ -412,6 +412,13 @@ function setupAnimations() {
         }
 
         syncFixedUi(event.indexh);
+        if (event.indexh !== 0) {
+            const actionRow = document.getElementById('action-row');
+            if (actionRow && actionRow.classList.contains('hidden')) {
+                actionRow.classList.remove('hidden');
+                gsap.set('.action-btn', { scale: 1, y: 0, opacity: 1 });
+            }
+        }
         if (event.indexh === 11) resetDemoProfileCarousel();
         if (event.indexh === 12) resetDemoChat();
         triggerSlideAnimation(event.indexh, isNext ? 'next' : 'prev');
@@ -539,7 +546,6 @@ function triggerMatchScreen() {
 
 function syncFixedUi(indexh) {
     const actionRow = document.getElementById('action-row');
-    if (actionRow) actionRow.classList.remove('hidden');
 
     const matchScreen = document.getElementById('match-screen');
     if (matchScreen && indexh !== 0 && matchScreen.classList.contains('active')) {
