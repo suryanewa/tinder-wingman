@@ -21,7 +21,7 @@ export const demoProfile = {
             id: 'basics',
             meta: 'Basics',
             body: '',
-            highlight: '5\'8" • Designer • 8 mi away',
+            highlight: '5\'8" • Climber • 8 mi away',
             bullets: [],
             photoPosition: 'center 40%'
         },
